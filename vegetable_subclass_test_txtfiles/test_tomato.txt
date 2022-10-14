@@ -1,0 +1,51 @@
+// tests for the functionality of the Tomato class
+// testing for functions plantCrop, isCropReady, add_harvested_crop
+
+Test 1
+input:
+plantCrop(5)
+isCropReady(60)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 100
+
+
+Test 2
+input:
+plantCrop(5)
+isCropReady(59)
+add_harvested_crop(false)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 3
+input:
+plantCrop(0)
+isCropReady(60)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 4
+input:
+plantCrop(-100)
+isCropReady(100)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 5
+input:
+plantCrop(1000)
+isCropReady(1000)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 20000

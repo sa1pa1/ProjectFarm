@@ -1,0 +1,52 @@
+// tests for the functionality of the Carrot class
+// testing for functions plantCrop, isCropReady, add_harvested_crop
+
+Test 1
+input:
+plantCrop(5)
+isCropReady(150)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 25
+
+
+Test 2
+input:
+plantCrop(1)
+isCropReady(149)
+add_harvested_crop(false)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 3
+input:
+plantCrop(1)
+isCropReady(151)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 5
+
+
+
+Test 4
+input:
+plantCrop(-100)
+isCropReady(150)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 5
+input:
+plantCrop(-1000)
+isCropReady(-1000)
+add_harvested_crop(false)
+
+expected output:
+Total # in inventory: 0

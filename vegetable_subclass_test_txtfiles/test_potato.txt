@@ -1,0 +1,51 @@
+// testing for functions plantCrop, isCropReady, add_harvested_crop
+
+test 1
+input:
+_time_since_plant = 30
+ready = false
+plant_potato(3)
+
+expected output:
+Total # in inventory = 0
+
+
+test 2
+input:
+_time_since_plant = 90
+ready = true
+plant_potato(3)
+
+expected output:
+Total # in inventory = 15
+
+
+test 3
+input:
+_time_since_plant = 1000
+ready = true
+plant_potato(5)
+
+expected output:
+Total # in inventory = 25
+
+
+test 4
+input:
+_time_since_plant = 0
+ready = true
+plant_potato(0)
+
+expected output:
+Total # in inventory = 25
+
+
+test 5
+input:
+_time_since_plant = 100
+ready = true
+plant_potato(-100)
+
+expected output:
+Total # in inventory = 0
+

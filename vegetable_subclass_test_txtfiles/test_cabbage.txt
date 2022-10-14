@@ -1,0 +1,51 @@
+// tests for the functionality of the Cabbage class
+// testing for functions plantCrop, isCropReady, add_harvested_crop
+
+Test 1
+input:
+plantCrop(10)
+isCropReady(200)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 10
+
+
+Test 2
+input:
+plantCrop(10)
+isCropReady(199)
+add_harvested_crop(false)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 3
+input:
+plantCrop(0)
+isCropReady(200)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 4
+input:
+plantCrop(-100)
+isCropReady(200)
+add_harvested_crop(true)
+
+expected output:
+Total # in inventory: 0
+
+
+Test 5
+input:
+plantCrop(-10)
+isCropReady(-200)
+add_harvested_crop(false)
+
+expected output:
+Total # in inventory: 0
