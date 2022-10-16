@@ -21,16 +21,15 @@ class Potato : public Vegetable {
   Potato();
 
   // Functions
-  virtual string getName();                // overrides Vegetable::getName
-  virtual int getOutput();                 // overrides Vegetable::getOutput
-  virtual int getGrowthTime();             // overrides Vegetable::getGrowthTime
-  virtual int inspect_veg();               // overrides Vegetable::inspect_veg
-  virtual int getCropValue();              // overrides Vegetable::getCropValue
-  virtual void plantCrop(int num_plants);  // overrides Vegetable::plantCrop
-  virtual bool isCropReady(
-      int time_since_plant);  // overrides Vegetable::isCropReady
-  virtual void add_harvested_crop(
+  string getName();                        // overrides Vegetable::getName
+  int getOutput();                         // overrides Vegetable::getOutput
+  int getGrowthTime();                     // overrides Vegetable::getGrowthTime
+  int inspect_veg();                       // overrides Vegetable::inspect_veg
+  int getCropValue();                      // overrides Vegetable::getCropValue
+  void plantCrop(int num_plants);          // overrides Vegetable::plantCrop
+  bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
+  void add_harvested_crop(
       bool check);  // overrides Vegetable::add_harvested_crop
-  virtual Potato* duplicate();
+  Potato* duplicate();
 };
 #endif  // POTATO_H
