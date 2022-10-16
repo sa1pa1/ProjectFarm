@@ -7,6 +7,8 @@
 class Inventory {
  protected:
   std::vector<Vegetable*> veg_vector;
+  // std::vector<int>::iterator it;
+
   int current_num_items;
   int max_num_items;
 
