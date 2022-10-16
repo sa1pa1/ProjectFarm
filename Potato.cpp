@@ -1,4 +1,14 @@
-// Implementation of the Potato class
+/**
+ * Implementation of the Potato class
+ *
+ * This file creates and initialises the vegetable subclass: Potato
+ * It initialises all of the data members in the Potato class and implements
+ * its function members.
+ *
+ * To start the game, the user has a total of 0 potatoes in their inventory.
+ * Each carrot plant yields 5 potatoes after harvest.
+ * It takes 3 days for a potato plant to grow and each can be sold for 3 coins.
+ */
 
 #include "Potato.h"
 
@@ -6,6 +16,7 @@
 #include <iostream>
 using namespace std;
 
+// Default constructor for the Potato class
 Potato::Potato() {
   _potato_total = 0;       // total number of potatoes
   _num_potato_plants = 0;  // number of potato plants

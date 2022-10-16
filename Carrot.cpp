@@ -1,4 +1,14 @@
-// Implementation of the Carrot class
+/**
+ * Implementation of the Carrot class
+ *
+ * This file creates and initialises the vegetable subclass: Carrot
+ * It initialises all of the data members in the Carrot class and implements
+ * its function members.
+ *
+ * To start the game, the user has a total of 0 carrots in their inventory.
+ * Each carrot plant yields 5 carrots after harvest.
+ * It takes 15 days for a carrot plant to grow and each can be sold for 5 coins.
+ */
 
 #include "Carrot.h"
 
@@ -6,6 +16,7 @@
 #include <iostream>
 using namespace std;
 
+// Default constructor for the Carrot class
 Carrot::Carrot() {
   _carrot_total = 0;       // total number of carrots
   _num_carrot_plants = 0;  // number of carrot plants

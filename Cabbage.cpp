@@ -1,4 +1,14 @@
-// Implementation of the Cabbage class
+/**
+ * Implementation of the Cabbage class
+ *
+ * This file creates and initialises the vegetable subclass: Cabbage
+ * It initialises all of the data members in the Cabbage class and implements
+ * its function members.
+ *
+ * To start the game, the user has a total of 0 cabbages in their inventory.
+ * Each cabbage plant yields 1 cabbage after harvest.
+ * It takes 10 days for a cabbage to grow and each can be sold for 10 coins.
+ */
 
 #include "Cabbage.h"
 
@@ -6,6 +16,7 @@
 #include <iostream>
 using namespace std;
 
+// Default constructor for the Cabbage class
 Cabbage::Cabbage() {
   _cabbage_total = 0;       // total number of cabbages
   _num_cabbage_plants = 0;  // number of cabbage plants

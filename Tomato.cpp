@@ -1,4 +1,14 @@
-// Implementation of the Tomato class
+/**
+ * Implementation of the Tomato class
+ *
+ * This file creates and initialises the vegetable subclass: Tomato
+ * It initialises all of the data members in the Tomato class and implements
+ * its function members.
+ *
+ * To start the game, the user has a total of 0 tomatoes in their inventory.
+ * Each carrot plant yields 20 tomatoes after harvest.
+ * It takes 6 days for a tomato plant to grow and each can be sold for 1 coin.
+ */
 
 #include "Tomato.h"
 
@@ -6,6 +16,7 @@
 #include <iostream>
 using namespace std;
 
+// Default constructor for the Tomato class
 Tomato::Tomato() {
   _tomato_total = 0;       // total number of tomatoes
   _num_tomato_plants = 0;  // total number of tomato plants
