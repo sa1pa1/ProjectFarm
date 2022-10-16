@@ -6,18 +6,19 @@
 using namespace std;
 
 
-class GardeningHoe{
+class GardeningHoe: public Equipment{
     protected:
         string equip_name;
          int util_lvl;
-         double boost;
+         double util_boost;
 
     public: 
         GardeningHoe();
-        void inspect_Function();
+        void get_Function();
         void Upgrade();
-        virtual int get_util_lvl();
-        virtual string get_name();
+        int get_util_lvl();
+        double get_boost_val();
+        string get_name();
 
 };
 #endif

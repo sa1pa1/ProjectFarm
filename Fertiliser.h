@@ -5,20 +5,21 @@
 #include "Equipment.h"
 using namespace std;
 
-class Fertiliser {
+class Fertiliser: public Equipment {
     protected:
         string equip_name;
-        
-        double boost;
+        int util_lvl;
+        double util_boost;
+       
      
     public: 
-        int util_lvl;
-        Fertiliser();
-        void inspect_Function();
-        void Upgrade();
-        virtual int get_util_lvl();
-        virtual string get_name();
 
+        Fertiliser();
+        void get_Function();
+        void Upgrade();
+        int get_util_lvl();
+        double get_boost_val();
+        string get_name();
 
 };
 
