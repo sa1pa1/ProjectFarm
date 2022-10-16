@@ -12,7 +12,7 @@ Tomato::Tomato() {
   _crop_name = "Tomato";
   _watering_pattern = "N/A";  // placeholder
   _crop_output = 20;          // 1 tomato plant yields 20 tomatoes
-  _growth_time = 60;          // 60 days
+  _growth_time = 6;           // 6 days
   _crop_value = 1;            // 1 coin per tomato
 }
 
@@ -57,7 +57,4 @@ void Tomato::add_harvested_crop(bool check) {
 int Tomato::inspect_veg() { return _tomato_total; }
 
 // returns a copy of Tomato
-Tomato * Tomato::duplicate()
-{
-  return new Tomato(*this);
-}
+Tomato* Tomato::duplicate() { return new Tomato(*this); }

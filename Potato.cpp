@@ -13,7 +13,7 @@ Potato::Potato() {
   _crop_name = "Potato";
   _watering_pattern = "N/A";  // placeholder
   _crop_output = 5;           // 1 potato plant yields 5 potatoes
-  _growth_time = 90;          // 90 days
+  _growth_time = 3;           // 3 days
   _crop_value = 3;            // 1 coin per potato
 }
 

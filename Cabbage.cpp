@@ -12,8 +12,8 @@ Cabbage::Cabbage() {
   _crop_name = "Cabbage";
   _watering_pattern = "N/A";  // placeholder
   _crop_output = 1;           // 1 Cabbage plant yields 1 cabbage
-  _growth_time = 200;         // 200 days
-  _crop_value = 10;            // 10 coins per cabbage
+  _growth_time = 10;          // 10 days
+  _crop_value = 10;           // 10 coins per cabbage
 }
 
 // returns name 'Cabbage'
@@ -57,7 +57,4 @@ void Cabbage::add_harvested_crop(bool check) {
 int Cabbage::inspect_veg() { return _cabbage_total; }
 
 // returns a copy of Cabbage
-Cabbage * Cabbage::duplicate()
-{
-  return new Cabbage(*this);
-}
+Cabbage* Cabbage::duplicate() { return new Cabbage(*this); }

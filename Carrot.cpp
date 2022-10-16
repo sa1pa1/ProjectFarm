@@ -12,7 +12,7 @@ Carrot::Carrot() {
   _crop_name = "Carrot";
   _watering_pattern = "N/A";  // placeholder
   _crop_output = 5;           // 1 Carrot plant yields 5 carrots
-  _growth_time = 150;         // 150 days
+  _growth_time = 15;          // 15 days
   _crop_value = 5;            // 5 coins per carrot
 }
 
