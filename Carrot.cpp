@@ -20,6 +20,7 @@ using namespace std;
 Carrot::Carrot() {
   _carrot_total = 0;       // total number of carrots
   _num_carrot_plants = 0;  // number of carrot plants
+  _day_planted = 0;
   _crop_name = "Carrot";
   _crop_output = 5;   // 1 Carrot plant yields 5 carrots
   _growth_time = 15;  // 15 days
@@ -32,6 +33,15 @@ string Carrot::getName() { return _crop_name; }
 // returns Carrot's crop output
 int Carrot::getOutput() { return _crop_output; }
 
+// returns number of seeds planted
+int Carrot::getNumPlants() { return _num_carrot_plants; }
+
+// set the day number that the seeds were planted on
+void Carrot::setDayPlanted(int day) { _day_planted = day; }
+
+// returns the day the seeds were planted on
+int Carrot::getDayPlanted() { return _day_planted; }
+
 // returns Carrot's growth time
 int Carrot::getGrowthTime() { return _growth_time; }
 
@@ -40,34 +50,41 @@ int Carrot::getCropValue() { return _crop_value; }
 
 // plants number of specified Carrot plants
 void Carrot::plantCrop(int num_plants) {
-  if (num_plants > 0 && num_plants < 11) {
-    _num_carrot_plants += num_plants;
-    cout << "You planted " << num_plants << " carrot seeds." << endl;
-  } else if (num_plants > 10) {
-    cout << "No carrot seeds planted. Max number of carrot seeds you can plant "
-            "is 10."
+  if (_num_carrot_plants != 0) {
+    cout << "Can't plant. Already have carrot seeds growing."
          << "\n";
   } else {
-    cout << "No carrot seeds planted. You must plant at least 1 carrot seed."
-         << "\n";
+    if (num_plants > 0 && num_plants < 11) {
+      _num_carrot_plants += num_plants;
+      cout << "You planted " << num_plants << " carrot seeds." << endl;
+    } else if (num_plants > 10) {
+      cout << "No carrot seeds planted. Max number of carrot seeds you can "
+              "plant "
+              "is 10."
+           << "\n";
+    } else {
+      cout << "No carrot seeds planted. You must plant at least 1 carrot seed."
+           << "\n";
+    }
   }
 }
 
 // returns true if Carrot plants are ready
 bool Carrot::isCropReady(int time_since_plant) {
-  if (time_since_plant >= _growth_time) {
+  if (time_since_plant == _growth_time) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 // adds number of Carrots yielded to total number of Carrots
 void Carrot::add_harvested_crop(bool check) {
-  if (check == true) {
+  if (check == true && _num_carrot_plants != 0) {
     _carrot_total += _num_carrot_plants * _crop_output;
     cout << "You have harvested " << _num_carrot_plants * _crop_output
          << " carrots!" << endl;
+    // reset the number of plants to 0
+    _num_carrot_plants = 0;
   }
 }
 

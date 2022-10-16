@@ -20,6 +20,7 @@ using namespace std;
 Potato::Potato() {
   _potato_total = 0;       // total number of potatoes
   _num_potato_plants = 0;  // number of potato plants
+  _day_planted = 0;
   _time_since_plant = 0;
   _crop_name = "Potato";
   _crop_output = 5;  // 1 potato plant yields 5 potatoes
@@ -33,42 +34,59 @@ string Potato::getName() { return _crop_name; }
 // returns Potato's crop output
 int Potato::getOutput() { return _crop_output; }
 
+// returns number of seeds planted
+int Potato::getNumPlants() { return _num_potato_plants; }
+
+// set the day number that the seeds were planted on
+void Potato::setDayPlanted(int day) { _day_planted = day; }
+
+// returns the day the seeds were planted on
+int Potato::getDayPlanted() { return _day_planted; }
+
 // returns Potato's growth time
 int Potato::getGrowthTime() { return _growth_time; }
 
 // returns value of a single Potato
 int Potato::getCropValue() { return _crop_value; }
 
+// checks if there are any potato plants growing already
 // plants number of specified potato plants
 void Potato::plantCrop(int num_plants) {
-  if (num_plants > 0 && num_plants < 11) {
-    _num_potato_plants += num_plants;
-    cout << "You planted " << num_plants << " potato seeds." << endl;
-  } else if (num_plants > 10) {
-    cout << "No potato seeds planted. Max number of potato seeds you can plant "
-            "is 10."
+  if (_num_potato_plants != 0) {
+    cout << "Can't plant. Already have potato seeds growing."
          << "\n";
   } else {
-    cout << "No potato seeds planted. You must plant at least 1 potato seed."
-         << "\n";
+    if (num_plants > 0 && num_plants < 11) {
+      _num_potato_plants += num_plants;
+      cout << "You planted " << num_plants << " potato seeds." << endl;
+    } else if (num_plants > 10) {
+      cout << "No potato seeds planted. Max number of potato seeds you can "
+              "plant "
+              "is 10."
+           << "\n";
+    } else {
+      cout << "No potato seeds planted. You must plant at least 1 potato seed."
+           << "\n";
+    }
   }
 }
 
 // returns true if potato plants are ready
 bool Potato::isCropReady(int time_since_plant) {
-  if (time_since_plant >= _growth_time) {
+  if (time_since_plant == _growth_time) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 // adds number of potatoes yielded to total number of potatoes
 void Potato::add_harvested_crop(bool check) {
-  if (check == true) {
+  if (check == true && _num_potato_plants != 0) {
     _potato_total += _num_potato_plants * _crop_output;
     cout << "You have harvested " << _num_potato_plants * _crop_output
          << " potatoes!" << endl;
+    // reset the number of plants to 0
+    _num_potato_plants = 0;
   }
 }
 

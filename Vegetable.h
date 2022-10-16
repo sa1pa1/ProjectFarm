@@ -31,11 +31,14 @@ class Vegetable : public Item {
   Vegetable() : Vegetable("No name", "No pattern", 0, 0, 0, false) {}
 
   // Functions
-  virtual string getName() = 0; // pure virtual function
+  virtual string getName() = 0;  // pure virtual function
   virtual int getOutput() = 0;
+  virtual int getNumPlants() = 0;
+  virtual void setDayPlanted(int day) = 0;
+  virtual int getDayPlanted() = 0;
   virtual int getGrowthTime() = 0;
   virtual int getCropValue() = 0;
-  virtual int inspect_veg() = 0; // pure virtual function
+  virtual int inspect_veg() = 0;  // pure virtual function
   virtual void plantCrop(int num_plants) = 0;
   virtual bool isCropReady(int time_since_plant) = 0;
   virtual void add_harvested_crop(bool check) = 0;

@@ -16,6 +16,7 @@ class Tomato : public Vegetable {
   int _tomato_total;
   int _num_tomato_plants;
   int _time_since_plant;
+  int _day_planted;
 
  public:
   Tomato();
@@ -23,6 +24,9 @@ class Tomato : public Vegetable {
   // Functions
   string getName();                        // overrides Vegetable::getName
   int getOutput();                         // overrides Vegetable::getOutput
+  int getNumPlants();                      // overrides Vegetable::getNumPlants
+  void setDayPlanted(int day);             // overrides Vegetable::setDayPlanted
+  int getDayPlanted();                     // overrides Vegetable::getDayPlanted
   int getGrowthTime();                     // overrides Vegetable::getGrowthTime
   int inspect_veg();                       // overrides Vegetable::inspect_veg
   int getCropValue();                      // overrides Vegetable::getCropValue
