@@ -8,18 +8,20 @@
 using namespace std;
 
 
-class WateringCan{
+class WateringCan: public Equipment{
     protected:
         string equip_name;
-        double boost;
+        double util_boost;
+        int util_lvl;
 
     public:
-        int util_lvl;
         WateringCan();
-        void inspect_Function();
+        void get_Function();
         void Upgrade();
-        virtual int get_util_lvl();
-        virtual string get_name();
+        int get_util_lvl();
+        double get_boost_val();
+        string get_name();
+
 
         
     
