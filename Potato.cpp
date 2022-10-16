@@ -22,10 +22,9 @@ Potato::Potato() {
   _num_potato_plants = 0;  // number of potato plants
   _time_since_plant = 0;
   _crop_name = "Potato";
-  _watering_pattern = "N/A";  // placeholder
-  _crop_output = 5;           // 1 potato plant yields 5 potatoes
-  _growth_time = 3;           // 3 days
-  _crop_value = 3;            // 1 coin per potato
+  _crop_output = 5;  // 1 potato plant yields 5 potatoes
+  _growth_time = 3;  // 3 days
+  _crop_value = 3;   // 1 coin per potato
 }
 
 // returns name 'Potato'
@@ -42,11 +41,16 @@ int Potato::getCropValue() { return _crop_value; }
 
 // plants number of specified potato plants
 void Potato::plantCrop(int num_plants) {
-  if (num_plants > 0) {
+  if (num_plants > 0 && num_plants < 11) {
     _num_potato_plants += num_plants;
-    cout << "You planted " << num_plants << " potato plants." << endl;
+    cout << "You planted " << num_plants << " potato seeds." << endl;
+  } else if (num_plants > 10) {
+    cout << "No potato seeds planted. Max number of potato seeds you can plant "
+            "is 10."
+         << "\n";
   } else {
-    _num_potato_plants = 0;
+    cout << "No potato seeds planted. You must plant at least 1 potato seed."
+         << "\n";
   }
 }
 

@@ -21,7 +21,6 @@ Cabbage::Cabbage() {
   _cabbage_total = 0;       // total number of cabbages
   _num_cabbage_plants = 0;  // number of cabbage plants
   _crop_name = "Cabbage";
-  _watering_pattern = "N/A";  // placeholder
   _crop_output = 1;           // 1 Cabbage plant yields 1 cabbage
   _growth_time = 10;          // 10 days
   _crop_value = 10;           // 10 coins per cabbage
@@ -41,11 +40,16 @@ int Cabbage::getCropValue() { return _crop_value; }
 
 // plants number of specified Cabbage plants
 void Cabbage::plantCrop(int num_plants) {
-  if (num_plants > 0) {
+  if (num_plants > 0 && num_plants < 11) {
     _num_cabbage_plants += num_plants;
-    cout << "You planted " << num_plants << " cabbage plants." << endl;
+    cout << "You planted " << num_plants << " cabbage seeds." << endl;
+  } else if (num_plants > 10) {
+    cout << "No cabbage seeds planted. Max number of cabbage seeds you can plant "
+            "is 10."
+         << "\n";
   } else {
-    _num_cabbage_plants = 0;
+    cout << "No cabbage seeds planted. You must plant at least 1 cabbage seed."
+         << "\n";
   }
 }
 

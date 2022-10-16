@@ -21,10 +21,9 @@ Carrot::Carrot() {
   _carrot_total = 0;       // total number of carrots
   _num_carrot_plants = 0;  // number of carrot plants
   _crop_name = "Carrot";
-  _watering_pattern = "N/A";  // placeholder
-  _crop_output = 5;           // 1 Carrot plant yields 5 carrots
-  _growth_time = 15;          // 15 days
-  _crop_value = 5;            // 5 coins per carrot
+  _crop_output = 5;   // 1 Carrot plant yields 5 carrots
+  _growth_time = 15;  // 15 days
+  _crop_value = 5;    // 5 coins per carrot
 }
 
 // returns name 'Carrot'
@@ -41,11 +40,16 @@ int Carrot::getCropValue() { return _crop_value; }
 
 // plants number of specified Carrot plants
 void Carrot::plantCrop(int num_plants) {
-  if (num_plants > 0) {
+  if (num_plants > 0 && num_plants < 11) {
     _num_carrot_plants += num_plants;
-    cout << "You planted " << num_plants << " carrot plants." << endl;
+    cout << "You planted " << num_plants << " carrot seeds." << endl;
+  } else if (num_plants > 10) {
+    cout << "No carrot seeds planted. Max number of carrot seeds you can plant "
+            "is 10."
+         << "\n";
   } else {
-    _num_carrot_plants = 0;
+    cout << "No carrot seeds planted. You must plant at least 1 carrot seed."
+         << "\n";
   }
 }
 

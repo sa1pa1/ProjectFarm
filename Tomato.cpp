@@ -21,7 +21,6 @@ Tomato::Tomato() {
   _tomato_total = 0;       // total number of tomatoes
   _num_tomato_plants = 0;  // total number of tomato plants
   _crop_name = "Tomato";
-  _watering_pattern = "N/A";  // placeholder
   _crop_output = 20;          // 1 tomato plant yields 20 tomatoes
   _growth_time = 6;           // 6 days
   _crop_value = 1;            // 1 coin per tomato
@@ -41,11 +40,16 @@ int Tomato::getCropValue() { return _crop_value; }
 
 // plants number of specified Tomato plants
 void Tomato::plantCrop(int num_plants) {
-  if (num_plants > 0) {
+  if (num_plants > 0 && num_plants < 11) {
     _num_tomato_plants += num_plants;
-    cout << "You planted " << num_plants << " tomato plants." << endl;
+    cout << "You planted " << num_plants << " tomato seeds." << endl;
+  } else if (num_plants > 10) {
+    cout << "No tomato seeds planted. Max number of tomato seeds you can plant "
+            "is 10."
+         << "\n";
   } else {
-    _num_tomato_plants = 0;
+    cout << "No tomato seeds planted. You must plant at least 1 tomato seed."
+         << "\n";
   }
 }
 
