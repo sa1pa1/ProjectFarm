@@ -44,6 +44,7 @@ int Potato::getCropValue() { return _crop_value; }
 void Potato::plantCrop(int num_plants) {
   if (num_plants > 0) {
     _num_potato_plants += num_plants;
+    cout << "You planted " << num_plants << " potato plants." << endl;
   } else {
     _num_potato_plants = 0;
   }
@@ -62,6 +63,8 @@ bool Potato::isCropReady(int time_since_plant) {
 void Potato::add_harvested_crop(bool check) {
   if (check == true) {
     _potato_total += _num_potato_plants * _crop_output;
+    cout << "You have harvested " << _num_potato_plants * _crop_output
+         << " potatoes!" << endl;
   }
 }
 

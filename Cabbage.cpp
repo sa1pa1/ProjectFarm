@@ -43,6 +43,7 @@ int Cabbage::getCropValue() { return _crop_value; }
 void Cabbage::plantCrop(int num_plants) {
   if (num_plants > 0) {
     _num_cabbage_plants += num_plants;
+    cout << "You planted " << num_plants << " cabbage plants." << endl;
   } else {
     _num_cabbage_plants = 0;
   }
@@ -61,6 +62,8 @@ bool Cabbage::isCropReady(int time_since_plant) {
 void Cabbage::add_harvested_crop(bool check) {
   if (check == true) {
     _cabbage_total += _num_cabbage_plants * _crop_output;
+    cout << "You have harvested " << _num_cabbage_plants * _crop_output
+         << " cabbages!" << endl;
   }
 }
 

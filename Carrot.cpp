@@ -43,6 +43,7 @@ int Carrot::getCropValue() { return _crop_value; }
 void Carrot::plantCrop(int num_plants) {
   if (num_plants > 0) {
     _num_carrot_plants += num_plants;
+    cout << "You planted " << num_plants << " carrot plants." << endl;
   } else {
     _num_carrot_plants = 0;
   }
@@ -61,6 +62,8 @@ bool Carrot::isCropReady(int time_since_plant) {
 void Carrot::add_harvested_crop(bool check) {
   if (check == true) {
     _carrot_total += _num_carrot_plants * _crop_output;
+    cout << "You have harvested " << _num_carrot_plants * _crop_output
+         << " carrots!" << endl;
   }
 }
 
