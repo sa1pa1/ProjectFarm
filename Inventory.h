@@ -7,8 +7,6 @@
 class Inventory {
  protected:
   std::vector<Vegetable*> veg_vector;
-  // std::vector<int>::iterator it;
-
   int current_num_items;
   int max_num_items;
 
@@ -19,7 +17,6 @@ class Inventory {
 
   // Functions
   void clearItems();
-  // void add_item(Item* item);
   void add_veg(Vegetable* crop);
   void remove_item(int slot_num);
   int getSize();
