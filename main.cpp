@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
   char Y;
 
   // Game loop
-  while (user.getCoins() < 1000 && action != -100) {
+  while (user.checkWin() == false && action != -100) {
     // Ready to harvest checks for each vegetable crop
     // If crop is ready to harvest, harvest output message will be displayed
 
