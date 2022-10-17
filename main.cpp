@@ -2,17 +2,18 @@
 // g++ Player.h Inventory.h Potato.h Tomato.h Cabbage.h Carrot.h Player.cpp
 // Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
 
+// enter -100 to exit game loop
+
 // what works right now:
 // planting/harvesting crops
+// selling crops
 // inspect vegetables
-// inspect coins
+// inspect wallet
 // Go to next day
-
 
 // need to add:
 // equipment functionality (main switch case 2)
 // inspect equipment       (main switch case 5)
-// selling crops           (main switch case 3)
 // instructions            (start of the game, after user's name is entered)
 // save file
 
@@ -84,6 +85,7 @@ int main(int argc, char *argv[]) {
   while (user.checkWin() == false && action != -100) {
     // Ready to harvest checks for each vegetable crop
     // If crop is ready to harvest, harvest output message will be displayed
+    // and the correct number of crops will be added to the user's inventory
 
     // day - day_planted = growth_time
     // POTATO
@@ -115,7 +117,7 @@ int main(int argc, char *argv[]) {
          << "\n";
     cout << "5. Inspect equipment"
          << "\n";
-    cout << "6. Inspect coins"
+    cout << "6. Inspect wallet"
          << "\n";
     cout << "7. Go to next day"
          << "\n";
@@ -234,24 +236,20 @@ int main(int argc, char *argv[]) {
         cin >> sell_action;
         cout << "\n";
 
-        // ******* PLACEHOLDER OUTPUT ************
-        // ******* need to add functionality here ************
+        // Adds coins to the player's wallet after selling all stock of their
+        // chosen crop Number of coins is calculated and then added
         switch (sell_action) {
           case 1:
-            cout << "Potato sold!"
-                 << "\n";
+            user.addCoins(pCrop.sellCrop());
             break;
           case 2:
-            cout << "Tomato sold!"
-                 << "\n";
+            user.addCoins(tCrop.sellCrop());
             break;
           case 3:
-            cout << "Cabbage sold!"
-                 << "\n";
+            user.addCoins(cbgCrop.sellCrop());
             break;
           case 4:
-            cout << "Carrot sold!"
-                 << "\n";
+            user.addCoins(crtCrop.sellCrop());
             break;
         }
         cout << "\n";
@@ -305,7 +303,7 @@ int main(int argc, char *argv[]) {
         cout << "\n";
         break;
 
-        // Inspect coins action
+        // Inspect wallet action
       case 6:
         cout << "You currently have " << user.getCoins() << " coins!"
              << "\n";
