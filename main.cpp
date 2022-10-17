@@ -86,6 +86,13 @@ int main(int argc, char *argv[]) {
        << "\n";
 
   // *** enter complete instructions here ***
+  
+  cout << "\n";
+  cout << "This is a farming simulator where you have to collect 1000 coins to win."
+  cout << "You can collect coins by selling crops, you already have potato crops but you can buy more crops from the trader."
+  cout << "You can also buy equipment upgrades for your hoe, watering can and fertiliser. The upgrades assist you with earning more coins."
+          "To play you must type in the number corresponding with that option. Good luck!"
+       << "\n";
 
   // enter -100 to exit game loop
   int action = 0;
