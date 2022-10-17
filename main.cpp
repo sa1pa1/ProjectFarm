@@ -29,6 +29,11 @@
 #include "Potato.h"
 #include "Tomato.h"
 #include "Vegetable.h"
+#include "Equipment.h"
+#include "GardeningHoe.h"
+#include "Fertiliser.h"
+#include "WateringCan.h"
+
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -45,6 +50,11 @@ int main(int argc, char *argv[]) {
   cout << "A text-based farming simulator game!"
        << "\n";
   cout << "\n";
+
+  // create equipment objects 
+     WateringCan w;
+     Fertiliser f;
+     GardeningHoe g;
 
   // Create vegetable crop objects
   Potato pCrop;
@@ -189,6 +199,7 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "3. Watering can"
              << "\n";
+     
 
         // Upgrade equipment based on user's choice
         int upgrade_action;
@@ -199,16 +210,20 @@ int main(int argc, char *argv[]) {
         // ******* need to add functionality here ************
         switch (upgrade_action) {
           case 1:
+               g.Upgrade();
             cout << "Gardening hoe upgraded!"
                  << "\n";
             break;
           case 2:
+               f.Upgrade();
             cout << "Fertiliser upgraded!"
                  << "\n";
             break;
           case 3:
+               w.Upgrade();
             cout << "Watering can upgraded!"
                  << "\n";
+
             break;
         }
         cout << "\n";
@@ -287,14 +302,17 @@ int main(int argc, char *argv[]) {
         cout << "---------------------------"
              << "\n";
         cout << "Gardening hoe -> "
-             << "1"
-             << "\n";
+             << g.get_util_lvl()<<endl;
+             g.get_Function();
+        cout<< "\n";
         cout << "Fertiliser -> "
-             << "1"
-             << "\n";
+             << f.get_util_lvl();
+             f.get_Function();
+        cout<< "\n";
         cout << "Watering can -> "
-             << "1"
-             << "\n";
+             << w.get_util_lvl();
+             w.get_Function();
+        cout<< "\n";
 
         cout << "\n";
         cout << "Enter Y to continue: "
