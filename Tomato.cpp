@@ -12,12 +12,12 @@
 
 #include "Tomato.h"
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
 
 // Default constructor for the Tomato class
 Tomato::Tomato() {
+  itemType = "Vegetable";
   _tomato_total = 0;       // total number of tomatoes
   _num_tomato_plants = 0;  // total number of tomato plants
   _day_planted = 0;
@@ -87,6 +87,27 @@ void Tomato::add_harvested_crop(bool check) {
     // reset the number of plants to 0
     _num_tomato_plants = 0;
   }
+}
+
+// sells number of Tomato crop in inventory
+// returns the calculated number of coins
+// if inventory has no tomatoes, output error message
+int Tomato::sellCrop() {
+  int coins = 0;
+  if (_tomato_total > 0) {
+    cout << _tomato_total << " tomatoes sold!"
+         << "\n";
+    coins = _crop_value * _tomato_total;
+    // reset tomato total
+    _tomato_total = 0;
+    // return number of coins to add to player's wallet
+    return coins;
+  } else {
+    // if there are 0 tomatoes in inventory
+    cout << "No tomatoes to sell."
+         << "\n";
+  }
+  return 0;
 }
 
 // returns number of Tomato in Inventory

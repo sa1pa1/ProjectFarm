@@ -1,12 +1,14 @@
+// Vegetable class header file
+// Vegetable has 4 subclasses: Potato, Tomato, Cabbage and Carrot
 #ifndef VEGETABLE_H
 #define VEGETABLE_H
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "Item.h"
 using namespace std;
 
+// Vegetable class is a subclass of Item
 class Vegetable : public Item {
  protected:
   string _crop_name;
@@ -31,17 +33,19 @@ class Vegetable : public Item {
   Vegetable() : Vegetable("No name", "No pattern", 0, 0, 0, false) {}
 
   // Functions
-  virtual string getName() = 0;  // pure virtual function
+  // pure virtual functions
+  virtual string getName() = 0;
   virtual int getOutput() = 0;
   virtual int getNumPlants() = 0;
   virtual void setDayPlanted(int day) = 0;
   virtual int getDayPlanted() = 0;
   virtual int getGrowthTime() = 0;
   virtual int getCropValue() = 0;
-  virtual int inspect_veg() = 0;  // pure virtual function
+  virtual int inspect_veg() = 0;
   virtual void plantCrop(int num_plants) = 0;
   virtual bool isCropReady(int time_since_plant) = 0;
   virtual void add_harvested_crop(bool check) = 0;
+  virtual int sellCrop() = 0;
   virtual Vegetable* duplicate() = 0;
 };
 

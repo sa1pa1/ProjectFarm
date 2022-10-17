@@ -8,6 +8,8 @@
 
 #include "Player.h"
 
+#include <iostream>
+
 // Default constructor for Player class
 Player::Player() { coins = 0; }
 
@@ -25,7 +27,10 @@ bool Player::checkWin() {
 }
 
 // add coins to the Player's coin total
-void Player::addCoins(int num) { coins += num; }
+void Player::addCoins(int num) {
+  coins += num;
+  cout << num << " coins added to wallet!" << "\n";
+}
 
 // remove coins from the Player's coin total
 void Player::removeCoins(int num) { coins -= num; }

@@ -1,24 +1,24 @@
 // Tomato class (Vegetable subclass)
 
+// Tomato class header file
 #ifndef TOMATO_H
 #define TOMATO_H
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "Vegetable.h"
 using namespace std;
 
+// Tomato class is a subclass of Vegetable
 class Tomato : public Vegetable {
  private:
-  // sf::Texture tomato_Texture;
-  // sf::Sprite tomato_Sprite;
   int _tomato_total;
   int _num_tomato_plants;
   int _time_since_plant;
   int _day_planted;
 
  public:
+  // Default Tomato constructor
   Tomato();
 
   // Functions
@@ -34,6 +34,7 @@ class Tomato : public Vegetable {
   bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
   void add_harvested_crop(
       bool check);  // overrides Vegetable::add_harvested_crop
+  int sellCrop();   // overrides Vegetable::sellCrop
   Tomato* duplicate();
 };
 #endif  // TOMATO_H

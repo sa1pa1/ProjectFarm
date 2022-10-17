@@ -12,12 +12,12 @@
 
 #include "Potato.h"
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
 
 // Default constructor for the Potato class
 Potato::Potato() {
+  itemType = "Vegetable";
   _potato_total = 0;       // total number of potatoes
   _num_potato_plants = 0;  // number of potato plants
   _day_planted = 0;
@@ -88,6 +88,27 @@ void Potato::add_harvested_crop(bool check) {
     // reset the number of plants to 0
     _num_potato_plants = 0;
   }
+}
+
+// sells number of Potato crop in inventory
+// returns the calculated number of coins
+// if inventory has no potatoes, output error message
+int Potato::sellCrop() {
+  int coins = 0;
+  if (_potato_total > 0) {
+    cout << _potato_total << " potatoes sold!"
+         << "\n";
+    coins = _crop_value * _potato_total;
+    // reset potato total
+    _potato_total = 0;
+    // return number of coins to add to player's wallet
+    return coins;
+  } else {
+    // if there are 0 potatoes in inventory
+    cout << "No potatoes to sell."
+         << "\n";
+  }
+  return 0;
 }
 
 // returns number of Potato in Inventory

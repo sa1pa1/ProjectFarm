@@ -12,12 +12,12 @@
 
 #include "Cabbage.h"
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
 
 // Default constructor for the Cabbage class
 Cabbage::Cabbage() {
+  itemType = "Vegetable";
   _cabbage_total = 0;       // total number of cabbages
   _num_cabbage_plants = 0;  // number of cabbage plants
   _day_planted = 0;
@@ -87,6 +87,27 @@ void Cabbage::add_harvested_crop(bool check) {
     // reset the number of plants to 0
     _num_cabbage_plants = 0;
   }
+}
+
+// sells number of Cabbage crop in inventory
+// returns the calculated number of coins
+// if inventory has no cabbages, output error message
+int Cabbage::sellCrop() {
+  int coins = 0;
+  if (_cabbage_total > 0) {
+    cout << _cabbage_total << " cabbages sold!"
+         << "\n";
+    coins = _crop_value * _cabbage_total;
+    // reset cabbage total
+    _cabbage_total = 0;
+    // return number of coins to add to player's wallet
+    return coins;
+  } else {
+    // if there are 0 cabbagees in inventory
+    cout << "No cabbages to sell."
+         << "\n";
+  }
+  return 0;
 }
 
 // returns number of Cabbage in Inventory

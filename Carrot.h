@@ -1,24 +1,23 @@
-// Carrot class (Vegetable subclass)
+// Carrot class header file
 
 #ifndef CARROT_H
 #define CARROT_H
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "Vegetable.h"
 using namespace std;
 
+// Carrot class is a subclass of Vegetable
 class Carrot : public Vegetable {
  private:
-  // sf::Texture carrot_Texture;
-  // sf::Sprite carrot_Sprite;
   int _carrot_total;
   int _num_carrot_plants;
   int _time_since_plant;
   int _day_planted;
 
  public:
+  // Default Carrot constructor
   Carrot();
 
   // Functions
@@ -34,6 +33,7 @@ class Carrot : public Vegetable {
   bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
   void add_harvested_crop(
       bool check);  // overrides Vegetable::add_harvested_crop
+  int sellCrop();   // overrides Vegetable::sellCrop
   Carrot* duplicate();
 };
 #endif  // CARROT_H

@@ -1,24 +1,22 @@
-// Potato class (Vegetable subclass)
-
+// Potato class header file
 #ifndef POTATO_H
 #define POTATO_H
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "Vegetable.h"
 using namespace std;
 
+// Potato class is a subclass of Vegetable
 class Potato : public Vegetable {
  private:
-  // sf::Texture potato_Texture;
-  // sf::Sprite potato_Sprite;
   int _potato_total;
   int _num_potato_plants;
   int _time_since_plant;
   int _day_planted;
 
  public:
+  // Default Potato constructor
   Potato();
 
   // Functions
@@ -34,6 +32,7 @@ class Potato : public Vegetable {
   bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
   void add_harvested_crop(
       bool check);  // overrides Vegetable::add_harvested_crop
+  int sellCrop();   // overrides Vegetable::sellCrop
   Potato* duplicate();
 };
 #endif  // POTATO_H

@@ -1,24 +1,22 @@
-// Cabbage class (Vegetable subclass)
-
+// Cabbage class header file
 #ifndef CABBAGE_H
 #define CABBAGE_H
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "Vegetable.h"
 using namespace std;
 
+// Cabbage class is a subclass of Vegetable
 class Cabbage : public Vegetable {
  private:
-  // sf::Texture cabbage_Texture;
-  // sf::Sprite cabbage_Sprite;
   int _cabbage_total;
   int _num_cabbage_plants;
   int _time_since_plant;
   int _day_planted;
 
  public:
+  // Default Cabbage constructor
   Cabbage();
 
   // Functions
@@ -34,6 +32,7 @@ class Cabbage : public Vegetable {
   bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
   void add_harvested_crop(
       bool check);  // overrides Vegetable::add_harvested_crop
+  int sellCrop();   // overrides Vegetable::sellCrop
   Cabbage* duplicate();
 };
 #endif  // CABBAGE_H

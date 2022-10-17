@@ -12,12 +12,12 @@
 
 #include "Carrot.h"
 
-// #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
 
 // Default constructor for the Carrot class
 Carrot::Carrot() {
+  itemType = "Vegetable";
   _carrot_total = 0;       // total number of carrots
   _num_carrot_plants = 0;  // number of carrot plants
   _day_planted = 0;
@@ -86,6 +86,27 @@ void Carrot::add_harvested_crop(bool check) {
     // reset the number of plants to 0
     _num_carrot_plants = 0;
   }
+}
+
+// sells number of Carrot crop in inventory
+// returns the calculated number of coins
+// if inventory has no carrot, output error message
+int Carrot::sellCrop() {
+  int coins = 0;
+  if (_carrot_total > 0) {
+    cout << _carrot_total << " carrots sold!"
+         << "\n";
+    coins = _crop_value * _carrot_total;
+    // reset carrot total
+    _carrot_total = 0;
+    // return number of coins to add to player's wallet
+    return coins;
+  } else {
+    // if there are 0 carrots in inventory
+    cout << "No carrots to sell."
+         << "\n";
+  }
+  return 0;
 }
 
 // returns number of Carrot in Inventory
