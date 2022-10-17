@@ -14,12 +14,15 @@ class Backpack: public WateringCan, public GardeningHoe, public Fertiliser{
 
     private:
         Equipment* contents;
-        int no_items;
-
-
+        int curr_equip_num;
     public: 
+
         Backpack();
-        void virtual inspect_backpack();
+        void inspect_equipment(int n);
+        Equipment* get_contents();
+        
+
+
 
 };
 
