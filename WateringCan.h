@@ -1,4 +1,4 @@
-//class watering can
+// watering can class header file
 
 #ifndef WATERINGCAN_H
 #define WATERINGCAN_H
@@ -7,7 +7,7 @@
 #include "Equipment.h"
 using namespace std;
 
-
+// watering can class is a subclass of Equipment
 class WateringCan: public Equipment{
     protected:
         string equip_name;
@@ -17,13 +17,15 @@ class WateringCan: public Equipment{
     
 
     public:
+    // Default watering can constructor
         WateringCan();
-        void get_Function();
-        void Upgrade();
-        int get_util_lvl();
-        int get_boost_val();
-        int get_equip_val();
-        string get_name();
+        // Functions
+        void get_Function(); // overrides Equipment::get_function
+        void Upgrade(); // overrides Equipment::Upgrade
+        int get_util_lvl(); // overrides Equipment::get_util_lvl
+        int get_boost_val(); // overrides Equipment::get_boost_val
+        int get_equip_val(); // overrides Equipment::get_equip_val
+        string get_name(); // overrides Equipment::get_name
     
 };
 #endif
