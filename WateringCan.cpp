@@ -47,6 +47,6 @@ string WateringCan::get_name(){
     return equip_name;
 }
 
-double WateringCan::get_boost_val(){
+int WateringCan::get_boost_val(){
     return util_boost;
 }

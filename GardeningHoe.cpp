@@ -47,7 +47,7 @@ string GardeningHoe::get_name(){
     return equip_name;
 }
 
-double GardeningHoe::get_boost_val(){
+int GardeningHoe::get_boost_val(){
     return util_boost;
 }
 

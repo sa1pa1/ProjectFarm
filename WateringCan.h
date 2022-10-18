@@ -19,7 +19,7 @@ class WateringCan: public Equipment{
         void get_Function();
         void Upgrade();
         int get_util_lvl();
-        double get_boost_val();
+        int get_boost_val();
         string get_name();
     
 };
