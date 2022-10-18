@@ -360,8 +360,45 @@ int main(int argc, char *argv[]) {
         cin >> Y;
         cout << "\n";
         break;
+        
+              // Save coin progress 
+        case 8: {
+          ofstream myfile ("save.txt");
+          if (myfile.is_open()){
+               myfile << user.getCoins();
+               myfile.close();
+               }
+          else cout << "error" << endl;
+          cout << "file saved \n";
+          return 0;
+         break;
+        }
+           // Load coin progress
+
+        case 9: {
+        fstream myfile;
+        myfile.open("save.txt", ios::in);
+        if (!myfile) {
+          cout << "error";
+        }
+        else {
+          char ch;
+          int a;
+          while (1) {
+               myfile >> ch;
+               if (myfile.eof())
+                    break;
+               
+               a == ch - '0';
+          }
+          user.addCoins(a);
+          myfile.close();
+        }
+          break;
+        }
     }
   }
+  
   
   // victory message
   cout << "Congratulations! You have reached 1000 coins."
