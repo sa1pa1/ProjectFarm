@@ -23,7 +23,7 @@ Tomato::Tomato() {
   _day_planted = 0;
   _crop_name = "Tomato";
   _crop_output = 20;  // 1 tomato plant yields 20 tomatoes
-  _growth_time = 6;   // 6 days
+  _growth_time = 8;   // 8 days
   _crop_value = 1;    // 1 coin per tomato
 }
 
@@ -72,18 +72,21 @@ void Tomato::plantCrop(int num_plants) {
 
 // returns true if Tomato plants are ready
 bool Tomato::isCropReady(int time_since_plant) {
-  if (time_since_plant == _growth_time) {
-    return true;
+  if (_num_tomato_plants > 0) {
+    if (time_since_plant >= _growth_time) {
+      return true;
+    }
   }
   return false;
 }
 
 // adds number of tomatoes yielded to total number of tomatoes
-void Tomato::add_harvested_crop(bool check) {
+void Tomato::add_harvested_crop(int multiplier, bool check) {
   if (check == true && _num_tomato_plants != 0) {
-    _tomato_total += _num_tomato_plants * _crop_output;
-    cout << "You have harvested " << _num_tomato_plants * _crop_output
-         << " tomatoes!" << endl;
+    _tomato_total += multiplier * _num_tomato_plants * _crop_output;
+    cout << "You have harvested "
+         << multiplier * _num_tomato_plants * _crop_output << " tomatoes!"
+         << endl;
     // reset the number of plants to 0
     _num_tomato_plants = 0;
   }

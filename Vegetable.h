@@ -44,7 +44,7 @@ class Vegetable : public Item {
   virtual int inspect_veg() = 0;
   virtual void plantCrop(int num_plants) = 0;
   virtual bool isCropReady(int time_since_plant) = 0;
-  virtual void add_harvested_crop(bool check) = 0;
+  virtual void add_harvested_crop(int multiplier, bool check) = 0;
   virtual int sellCrop() = 0;
   virtual Vegetable* duplicate() = 0;
 };

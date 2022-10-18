@@ -31,6 +31,7 @@ class Cabbage : public Vegetable {
   void plantCrop(int num_plants);          // overrides Vegetable::plantCrop
   bool isCropReady(int time_since_plant);  // overrides Vegetable::isCropReady
   void add_harvested_crop(
+      int multiplier,
       bool check);  // overrides Vegetable::add_harvested_crop
   int sellCrop();   // overrides Vegetable::sellCrop
   Cabbage* duplicate();

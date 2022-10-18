@@ -23,7 +23,7 @@ Cabbage::Cabbage() {
   _day_planted = 0;
   _crop_name = "Cabbage";
   _crop_output = 1;   // 1 Cabbage plant yields 1 cabbage
-  _growth_time = 10;  // 10 days
+  _growth_time = 12;  // 12 days
   _crop_value = 10;   // 10 coins per cabbage
 }
 
@@ -72,18 +72,21 @@ void Cabbage::plantCrop(int num_plants) {
 
 // returns true if Cabbage plants are ready
 bool Cabbage::isCropReady(int time_since_plant) {
-  if (time_since_plant == _growth_time) {
-    return true;
+  if (_num_cabbage_plants > 0) {
+    if (time_since_plant >= _growth_time) {
+      return true;
+    }
   }
   return false;
 }
 
 // adds number of Cabbages yielded to total number of Cabbages
-void Cabbage::add_harvested_crop(bool check) {
+void Cabbage::add_harvested_crop(int multiplier, bool check) {
   if (check == true && _num_cabbage_plants != 0) {
-    _cabbage_total += _num_cabbage_plants * _crop_output;
-    cout << "You have harvested " << _num_cabbage_plants * _crop_output
-         << " cabbages!" << endl;
+    _cabbage_total += multiplier * _num_cabbage_plants * _crop_output;
+    cout << "You have harvested "
+         << multiplier * _num_cabbage_plants * _crop_output << " cabbages!"
+         << endl;
     // reset the number of plants to 0
     _num_cabbage_plants = 0;
   }

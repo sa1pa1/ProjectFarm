@@ -23,7 +23,7 @@ Carrot::Carrot() {
   _day_planted = 0;
   _crop_name = "Carrot";
   _crop_output = 5;   // 1 Carrot plant yields 5 carrots
-  _growth_time = 15;  // 15 days
+  _growth_time = 16;  // 16 days
   _crop_value = 5;    // 5 coins per carrot
 }
 
@@ -71,18 +71,21 @@ void Carrot::plantCrop(int num_plants) {
 
 // returns true if Carrot plants are ready
 bool Carrot::isCropReady(int time_since_plant) {
-  if (time_since_plant == _growth_time) {
-    return true;
+  if (_num_carrot_plants > 0) {
+    if (time_since_plant >= _growth_time) {
+      return true;
+    }
   }
   return false;
 }
 
 // adds number of Carrots yielded to total number of Carrots
-void Carrot::add_harvested_crop(bool check) {
+void Carrot::add_harvested_crop(int multiplier, bool check) {
   if (check == true && _num_carrot_plants != 0) {
-    _carrot_total += _num_carrot_plants * _crop_output;
-    cout << "You have harvested " << _num_carrot_plants * _crop_output
-         << " carrots!" << endl;
+    _carrot_total += multiplier * _num_carrot_plants * _crop_output;
+    cout << "You have harvested "
+         << multiplier * _num_carrot_plants * _crop_output << " carrots!"
+         << endl;
     // reset the number of plants to 0
     _num_carrot_plants = 0;
   }
