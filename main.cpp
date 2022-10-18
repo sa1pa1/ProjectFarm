@@ -231,54 +231,62 @@ int main(int argc, char *argv[]) {
         // Upgrades the user's chosen piece of equipment
         // Provided the user has enough coins in their wallet
         switch (upgrade_action) {
+     
           case 1:
-            if (user.getCoins() >= g.get_equip_val()) {
+          
+            if (user.getCoins() >= g.get_equip_val() && g.get_util_lvl()!=3) {
               g.Upgrade();
               user.removeCoins(g.get_equip_val());
               cout << g.get_equip_val() << " spent!" << endl;
               cout << "Gardening hoe upgraded to level " << g.get_util_lvl()
                    << endl;
               cout << "\n";
+            } 
 
-               if (g.get_util_lvl() == 3){
-                    g.get_equip_val() = 0;
-                    cout<<"Maximum level reached, can no longer update!"<<endl;
-               }
-            } else
+            if (g.get_util_lvl() == 3){
+               cout<<"Maximum level reached! Can not upgrade"<<endl;
+            }
+
+            if (user.getCoins() < g.get_equip_val()){
               cout << "Not enough coins to upgrade" << endl;
+            }
+
             break;
           case 2:
-            if (user.getCoins() >= f.get_equip_val()) {
+            if (user.getCoins() >= f.get_equip_val() && f.get_util_lvl() != 3) {
               f.Upgrade();
               user.removeCoins(f.get_equip_val());
               cout << f.get_equip_val() << " spent!" << endl;
               cout << "Fertiliser upgraded to level " << f.get_util_lvl()
                    << endl;
-              cout << "\n";
+              cout << "\n";}
 
-              if (g.get_util_lvl() == 3){
-                    g.get_equip_val() = 0;
-                    cout<<"Maximum level reached, can no longer update!"<<endl;
-               }
-            } else
+            if (g.get_util_lvl() == 3){
+               cout<<"Maximum level reached! Can not upgrade"<<endl;
+            }
+          
+            if (user.getCoins() < f.get_equip_val()){
               cout << "Not enough coins to upgrade" << endl;
+            }
+
             break;
+
           case 3:
-            if (user.getCoins() >= w.get_equip_val()) {
+            if (user.getCoins() >= w.get_equip_val() && w.get_util_lvl() !=3) {
               w.Upgrade();
               user.removeCoins(w.get_equip_val());
               cout << w.get_equip_val() << " spent!" << endl;
               cout << "Watering can upgraded to level " << w.get_util_lvl()
                    << endl;
-              cout << "\n";
+              cout << "\n";}
 
-              if (g.get_util_lvl() == 3){
-                    g.get_equip_val() = 0;
-                    cout<<"Maximum level reached, can no longer update!"<<endl;
-               }
-            } else
+            if (g.get_util_lvl() == 3){
+               cout<<"Maximum level reached! Can not upgrade"<<endl;
+            }
+          
+            if (user.getCoins() < w.get_equip_val()){
               cout << "Not enough coins to upgrade" << endl;
-            break;
+            }
 
           default:
             cout << "Invalid input. Please try again."
@@ -458,7 +466,7 @@ int main(int argc, char *argv[]) {
         }
     }
   }
-  
+
   
   // Victory message
   cout << "\n";
