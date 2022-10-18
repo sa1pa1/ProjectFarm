@@ -1,4 +1,11 @@
-// **** Add header comment here
+//////////////////////////////////////////////////////////////////////////////////////////////////////// 
+// MAIN FILE FOR COIN FARM PROJECT                                                                    //
+//                                                                                                    //
+// This program is a farming simulator game in which the player's goal is to                          //
+// reach 1000 coins. The farm grows different crops with varying attributes and                       //
+// the player can upgrade their equipment to help them win the game faster.                           //
+//                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // compile with:
 // g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h
@@ -6,11 +13,13 @@
 // Player.cpp Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp
 // main.cpp -o main
 
+// Libraries
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 
+// Header files
 #include "Cabbage.h"
 #include "Carrot.h"
 #include "Equipment.h"
@@ -26,6 +35,7 @@
 
 using namespace std;
 
+// main function
 int main(int argc, char *argv[]) {
   // Welcome message
   cout << "\n";
@@ -125,7 +135,7 @@ int main(int argc, char *argv[]) {
     crtCrop.add_harvested_crop(output_multiplier, crtReady);
 
     // List of actions
-    // User selects by entering numbers 1-7
+    // User selects by entering numbers 1-9
     cout << "Select a number to choose an action: "
          << "\n";
     cout << "1. Plant vegetable"
@@ -141,6 +151,10 @@ int main(int argc, char *argv[]) {
     cout << "6. Inspect wallet"
          << "\n";
     cout << "7. Go to next day"
+         << "\n";
+    cout << "8. Save progress"
+         << "\n";
+    cout << "9. Load progress"
          << "\n";
 
     // user chooses action number
@@ -229,64 +243,71 @@ int main(int argc, char *argv[]) {
         cout << "\n";
 
         // Upgrades the user's chosen piece of equipment
-        // Provided the user has enough coins in their wallet
+        // Provided the user has enough coins in their wallet and level is not
+        // max
         switch (upgrade_action) {
-     
           case 1:
-          
-            if (user.getCoins() >= g.get_equip_val() && g.get_util_lvl()!=3) {
+            // User doesn't have enough coins and equipment isn't max level
+            if (user.getCoins() < g.get_equip_val() && g.get_util_lvl() != 3) {
+              cout << "Not enough coins to upgrade" << endl;
+
+              // Equipment is max level
+            } else if (g.get_util_lvl() == 3) {
+              cout << "Maximum level reached! Can not upgrade" << endl;
+
+              // User has enough coins and equipment isn't max level
+            } else if (user.getCoins() >= g.get_equip_val() &&
+                       g.get_util_lvl() != 3) {
               g.Upgrade();
               user.removeCoins(g.get_equip_val());
-              cout << g.get_equip_val() << " spent!" << endl;
+              cout << g.get_equip_val() << " coins spent!" << endl;
               cout << "Gardening hoe upgraded to level " << g.get_util_lvl()
                    << endl;
               cout << "\n";
-            } 
-
-            if (g.get_util_lvl() == 3){
-               cout<<"Maximum level reached! Can not upgrade"<<endl;
             }
-
-            if (user.getCoins() < g.get_equip_val()){
-              cout << "Not enough coins to upgrade" << endl;
-            }
-
             break;
+
           case 2:
-            if (user.getCoins() >= f.get_equip_val() && f.get_util_lvl() != 3) {
+            // User doesn't have enough coins and equipment isn't max level
+            if (user.getCoins() < f.get_equip_val() && f.get_util_lvl() != 3) {
+              cout << "Not enough coins to upgrade" << endl;
+
+              // Equipment is max level
+            } else if (f.get_util_lvl() == 3) {
+              cout << "Maximum level reached! Can not upgrade" << endl;
+
+              // User has enough coins and equipment isn't max level
+            } else if (user.getCoins() >= f.get_equip_val() &&
+                       f.get_util_lvl() != 3) {
               f.Upgrade();
               user.removeCoins(f.get_equip_val());
-              cout << f.get_equip_val() << " spent!" << endl;
-              cout << "Fertiliser upgraded to level " << f.get_util_lvl()
+              cout << f.get_equip_val() << " coins spent!" << endl;
+              cout << "Gardening hoe upgraded to level " << f.get_util_lvl()
                    << endl;
-              cout << "\n";}
-
-            if (g.get_util_lvl() == 3){
-               cout<<"Maximum level reached! Can not upgrade"<<endl;
+              cout << "\n";
             }
-          
-            if (user.getCoins() < f.get_equip_val()){
-              cout << "Not enough coins to upgrade" << endl;
-            }
-
             break;
 
           case 3:
-            if (user.getCoins() >= w.get_equip_val() && w.get_util_lvl() !=3) {
+            // User doesn't have enough coins and equipment isn't max level
+            if (user.getCoins() < w.get_equip_val() && w.get_util_lvl() != 3) {
+              cout << "Not enough coins to upgrade" << endl;
+
+              // Equipment is max level
+            } else if (w.get_util_lvl() == 3) {
+              cout << "Maximum level reached! Can not upgrade" << endl;
+
+              // User has enough coins and equipment isn't max level
+            } else if (user.getCoins() >= w.get_equip_val() &&
+                       w.get_util_lvl() != 3) {
               w.Upgrade();
               user.removeCoins(w.get_equip_val());
-              cout << w.get_equip_val() << " spent!" << endl;
-              cout << "Watering can upgraded to level " << w.get_util_lvl()
+              cout << w.get_equip_val() << " coins spent!" << endl;
+              cout << "Gardening hoe upgraded to level " << w.get_util_lvl()
                    << endl;
-              cout << "\n";}
-
-            if (g.get_util_lvl() == 3){
-               cout<<"Maximum level reached! Can not upgrade"<<endl;
+              cout << "\n";
             }
-          
-            if (user.getCoins() < w.get_equip_val()){
-              cout << "Not enough coins to upgrade" << endl;
-            }
+            break;
 
           default:
             cout << "Invalid input. Please try again."
@@ -424,50 +445,48 @@ int main(int argc, char *argv[]) {
         cout << "\n";
         break;
 
-      default:
-        cout << "Invalid input. Please try again."
-             << "\n";
-        cout << "\n";
-        
-              // Save coin progress 
-        case 8: {
-          ofstream myfile ("save.txt");
-          if (myfile.is_open()){
-               myfile << user.getCoins();
-               myfile.close();
-               }
-          else cout << "error" << endl;
-          cout << "file saved \n";
-          return 0;
-         break;
-        }
-           // Load coin progress
+        // Save coin progress
+      case 8: {
+        ofstream myfile("save.txt");
+        if (myfile.is_open()) {
+          myfile << user.getCoins();
+          myfile.close();
+        } else
+          cout << "error" << endl;
+        cout << "file saved \n";
+        return 0;
+        break;
+      }
+        // Load coin progress
 
-        case 9: {
+      case 9: {
         fstream myfile;
         myfile.open("save.txt", ios::in);
         if (!myfile) {
           cout << "error";
-        }
-        else {
+        } else {
           char ch;
           int a;
           while (1) {
-               myfile >> ch;
-               if (myfile.eof())
-                    break;
-               
-               a == ch - '0';
+            myfile >> ch;
+            if (myfile.eof()) break;
+
+            a == ch - '0';
           }
           user.addCoins(a);
           myfile.close();
         }
-          break;
-        }
+        break;
+      }
+
+        // if user inputs a number not 1-9
+      default:
+        cout << "Invalid input. Please try again."
+             << "\n";
+        cout << "\n";
     }
   }
 
-  
   // Victory message
   cout << "\n";
   cout << "--------------------------------------------------------------------"
