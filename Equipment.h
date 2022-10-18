@@ -27,7 +27,7 @@ class Equipment {
         //constructors 
         virtual string get_name()=0;
         virtual int get_util_lvl()=0;
-        virtual double get_boost_val()=0;
+        virtual int get_boost_val()=0;
         void Upgrade();
         void get_Function();
 
