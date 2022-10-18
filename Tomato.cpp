@@ -87,6 +87,7 @@ void Tomato::add_harvested_crop(int multiplier, bool check) {
     cout << "You have harvested "
          << multiplier * _num_tomato_plants * _crop_output << " tomatoes!"
          << endl;
+    cout << "\n";
     // reset the number of plants to 0
     _num_tomato_plants = 0;
   }

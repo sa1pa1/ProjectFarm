@@ -87,6 +87,7 @@ void Cabbage::add_harvested_crop(int multiplier, bool check) {
     cout << "You have harvested "
          << multiplier * _num_cabbage_plants * _crop_output << " cabbages!"
          << endl;
+    cout << "\n";
     // reset the number of plants to 0
     _num_cabbage_plants = 0;
   }
