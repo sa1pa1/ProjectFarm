@@ -32,5 +32,4 @@ int main(){
     cout<<"Utility level: "<<a.get_util_lvl()<<endl;
     cout<<"Boost level: "<<a.get_boost_val()<<endl;
     a.get_Function();
-
 }
