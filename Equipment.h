@@ -1,5 +1,5 @@
-//Project first run 
-//Equipment class
+// Equipment class header file
+// Equipment has 3 subclasses: Watering can, gardening hoe and fertiliser
 
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
@@ -14,6 +14,7 @@ class Equipment {
         double util_boost;
         int equip_value;
 
+     // constructor to initialise data members in the Equipment class
     public: 
         Equipment(int Util_lvl, double Util_boost):
        util_lvl(Util_lvl), util_boost(Util_boost){}
@@ -24,7 +25,8 @@ class Equipment {
             
         }
 
-        //constructors 
+        // Functions
+        // pure virtual functions
         virtual string get_name()=0;
         virtual int get_util_lvl()=0;
         virtual int get_boost_val()=0;
