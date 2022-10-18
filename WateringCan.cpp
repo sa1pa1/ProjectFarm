@@ -13,13 +13,13 @@ WateringCan::WateringCan(){
 
 void WateringCan::get_Function(){
     if (util_lvl == 1){
-        cout<<"Watering can of level "<<get_util_lvl()<<" reduce growth time by 0.00x"<<endl;
+        cout<<"Watering can of level "<<get_util_lvl()<<". No reduced growth time."<<endl;
     }
     if (util_lvl == 2){
-         cout<<"Watering can of level "<<get_util_lvl()<<" reduce growth time by 0.25x"<<endl;
+         cout<<"Watering can of level "<<get_util_lvl()<<" reduce growth time by 2.00x"<<endl;
     }
     if (util_lvl == 3){
-         cout<<"Watering can of level "<<get_util_lvl()<<" reduce growth time by 0.5x"<<endl;
+         cout<<"Watering can of level "<<get_util_lvl()<<" reduce growth time by 3.00x"<<endl;
     }
 
 }
@@ -27,13 +27,13 @@ void WateringCan::get_Function(){
 void WateringCan::Upgrade(){
     if (util_lvl < 3){
     util_lvl = util_lvl + 1;
-    util_boost = 0.75;
+    util_boost = 2;
     }
 
     if (util_lvl ==3) {
         cout<<"Maximum utility level reached"<<endl;
         util_lvl = 3;
-        util_boost = 0.85;
+        util_boost = 3;
     }
 }
 
