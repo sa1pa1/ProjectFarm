@@ -1,3 +1,4 @@
+// Fertiliser class header file
 #ifndef FERTILISER_H
 #define FERTILISER_H
 #include <string>
@@ -5,6 +6,7 @@
 #include "Equipment.h"
 using namespace std;
 
+// Fertiliser class is a subclass of Equipment
 class Fertiliser: public Equipment {
     protected:
         string equip_name;
@@ -14,14 +16,15 @@ class Fertiliser: public Equipment {
        
      
     public: 
-
+// Default Fertiliser constructor
         Fertiliser();
-        void get_Function();
-        void Upgrade();
-        int get_util_lvl();
-        int get_boost_val();
-        int get_equip_val();
-        string get_name();
+    // Functions
+        void get_Function(); // overrides Equipment::get_function
+        void Upgrade(); // overrides Equipment::Upgrade
+        int get_util_lvl(); // overrides Equipment::get_util_lvl
+        int get_boost_val(); // overrides Equipment::get_boost_val
+        int get_equip_val(); // overrides Equipment::get_equip_val
+        string get_name(); // overrides Equipment::get_name
 
 };
 
