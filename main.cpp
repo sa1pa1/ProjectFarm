@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "Cabbage.h"
 #include "Carrot.h"
@@ -404,9 +405,46 @@ int main(int argc, char *argv[]) {
         cout << "Invalid input. Please try again."
              << "\n";
         cout << "\n";
+        
+              // Save coin progress 
+        case 8: {
+          ofstream myfile ("save.txt");
+          if (myfile.is_open()){
+               myfile << user.getCoins();
+               myfile.close();
+               }
+          else cout << "error" << endl;
+          cout << "file saved \n";
+          return 0;
+         break;
+        }
+           // Load coin progress
+
+        case 9: {
+        fstream myfile;
+        myfile.open("save.txt", ios::in);
+        if (!myfile) {
+          cout << "error";
+        }
+        else {
+          char ch;
+          int a;
+          while (1) {
+               myfile >> ch;
+               if (myfile.eof())
+                    break;
+               
+               a == ch - '0';
+          }
+          user.addCoins(a);
+          myfile.close();
+        }
+          break;
+        }
     }
   }
-
+  
+  
   // Victory message
   cout << "\n";
   cout << "--------------------------------------------------------------------"
