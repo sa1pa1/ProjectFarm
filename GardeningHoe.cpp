@@ -2,7 +2,7 @@
  * Implementation of the gardening hoe class
  *
  * This file creates and initialises the equipment subclass: gardening hoe
- * It initialises all of the data members in the Fertiliser class and implements
+ * It initialises all of the data members in the gardening hoe class and implements
  * its function members.
  *
  * To start the game, the user has a level 1 gardening hoe in their inventory.
