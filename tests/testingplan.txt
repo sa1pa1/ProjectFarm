@@ -1,0 +1,22 @@
+
+1/ TESTING EQUIPMENTS CLASSES AND ITS INHERTIANCE CLASSES ARE WORKING PROPERLY
+
+{Make sure that they work and can combine with Abstract class Equipment}
+
+Watering Can:
+-> test that it can return the correct boost value, utility lvl, equipment name, function 
+-> test that once it reaches utility level of 3 it can no longer upgrade. 
+-> test that the correct utility outputs the correct boost value 
+
+Fertiliser:
+-> test that it can return the correct boost value, utility lvl, equipment name, function 
+-> test that once it reaches utility level of 3 it can no longer upgrade. 
+-> test that the correct utility outputs the correct boost value 
+
+Gardening Hoe:
+-> test that it can return the correct boost value, utility lvl, equipment name, function 
+-> test that once it reaches utility level of 3 it can no longer upgrade. 
+-> test that the correct utility outputs the correct boost value 
+
+
+

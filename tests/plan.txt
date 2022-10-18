@@ -1,0 +1,56 @@
+Equipment:
+Has equipment name, utility level, equipment_value, equipment power
+
+Equipment has constructors: 
+virtual:
+
+Getstatus -> utility level
+GetFunction() -> display what the function does 
+
+string equipname
+int equiplvl
+
+
+How to allow them to interact with crops and such. 
+
+Backpack -> Equipment -> Equipment_type 
+Inventory -> Vegetable -> Vegetable_type 
+
+Abstract: Vegetable and equipment classes 
+
+
+Watering can:
+lvl 1 watering can = normal growth speed of crop 
+Trade in: 25 coins -> lvl 2 watering can = reduce speed by 0.2x 
+Trade in: 25 coins -> lvl 3 watering can = reduce speed by 0.5x
+
+Gardening hoe:
+lvl 1 = normal crop output
+Trade in: 25 coins -> lvl 2 = +x0.25 crop output
+Trade in: 25 coins -> lvl 3 = +x0.5 crop output
+
+Fertiliser:
+lvl 1 = normal crop value 
+Trade in: 25 coins -> lvl 2 = +x0.05 crop value 
+Trade in: 25 coins -> lvl 3 = +x0.25 crop value 
+
+Dynamically allocated array:
+For upgraded items with current items 
+
+Backpack class -> one virtual 
+
+
+Backpack = holds the equipments; including equipment lvl and utility 
+Getstatus() 
+
+Equipment = the types of equipments, can tell the function of the equipment 
+-> where the upgrade makes changes 
+
+Equipment_type = each equipment 
+
+
+
+
+
+
+
