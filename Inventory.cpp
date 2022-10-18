@@ -13,8 +13,8 @@
 
 // Inventory constructor
 Inventory::Inventory() {
-  max_num_items = 4;
-  veg_vector.reserve(max_num_items);  // empty vector with space for 4 pointers
+  veg_vector.reserve(1);  // intialising inventory with 1 space
+  current_num_items = 0;
 }
 
 // Functions
@@ -22,7 +22,22 @@ Inventory::Inventory() {
 void Inventory::clearItems() { veg_vector.clear(); }
 
 // add vegetable to the vegetable vector
-void Inventory::add_veg(Vegetable* crop) { veg_vector.push_back(crop); }
+void Inventory::add_veg(Vegetable* crop) { 
+  
+  // If we are not adding the first item in the inventory
+  if (current_num_items >= 1){
+
+    // Allocate space for the current inventory, copy it to a temp, and reserve space for the inventory + new item
+    temp_vector.reserve(current_num_items);
+    temp_vector = veg_vector;
+    veg_vector.reserve(current_num_items+1);
+    veg_vector = temp_vector;
+    veg_vector.push_back(crop);
+  } else {
+    veg_vector.push_back(crop);
+  }
+  current_num_items += 1;
+}
 
 // clear a singular slot in the vegetable vector
 void Inventory::remove_item(int slot_num) {

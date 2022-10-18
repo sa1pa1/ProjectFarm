@@ -7,8 +7,9 @@
 class Inventory {
  protected:
   std::vector<Vegetable*> veg_vector;
+  std::vector<Vegetable*> temp_vector;
   int current_num_items;
-  int max_num_items;
+  //int;
 
  public:
   // constructor and destructor
