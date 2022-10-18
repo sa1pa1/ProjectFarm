@@ -1,13 +1,10 @@
 // compile with:
-// g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h
-// Tomato.h Cabbage.h Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp
-// Player.cpp Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp
-// main.cpp -o main
+// g++ Player.h Inventory.h Potato.h Tomato.h Cabbage.h Carrot.h Player.cpp
+// Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
 
 // enter -100 to exit game loop
 
 // what works right now:
-// instructions
 // planting/harvesting crops
 // selling crops
 // inspect vegetables
@@ -17,6 +14,7 @@
 // need to add:
 // equipment functionality (main switch case 2)
 // inspect equipment       (main switch case 5)
+// instructions            (start of the game, after user's name is entered)
 // save file
 
 #include <iostream>
@@ -25,15 +23,15 @@
 
 #include "Cabbage.h"
 #include "Carrot.h"
-#include "Equipment.h"
-#include "Fertiliser.h"
-#include "GardeningHoe.h"
 #include "Inventory.h"
 #include "Item.h"
 #include "Player.h"
 #include "Potato.h"
 #include "Tomato.h"
 #include "Vegetable.h"
+#include "Equipment.h"
+#include "GardeningHoe.h"
+#include "Fertiliser.h"
 #include "WateringCan.h"
 
 using namespace std;
@@ -53,10 +51,10 @@ int main(int argc, char *argv[]) {
        << "\n";
   cout << "\n";
 
-  // create equipment objects
-  WateringCan w;
-  Fertiliser f;
-  GardeningHoe g;
+  // create equipment objects 
+     WateringCan w;
+     Fertiliser f;
+     GardeningHoe g;
 
   // Create vegetable crop objects
   Potato pCrop;
@@ -87,18 +85,7 @@ int main(int argc, char *argv[]) {
   cout << "Hi " << name << "! Here are the instructions on how to play..."
        << "\n";
 
-  cout << "\n";
-  cout << "This is a farming simulator where you have to collect 1000 coins to "
-          "win."
-       << "\n";
-  cout << "You can collect coins by selling crops, you already have potato "
-          "crops but you can buy more crops from the trader."
-       << "\n";
-  cout << "You can also buy equipment upgrades for your hoe, watering can and "
-          "fertiliser. The upgrades assist you with earning more coins."
-          "To play you must type in the number corresponding with that option. "
-          "Good luck!"
-       << "\n";
+  // *** enter complete instructions here ***
 
   // enter -100 to exit game loop
   int action = 0;
@@ -111,20 +98,21 @@ int main(int argc, char *argv[]) {
     // and the correct number of crops will be added to the user's inventory
 
     // day - day_planted = growth_time
+    //IMPLEMENTED IN FUNCTION OF WATERING CAN
     // POTATO
-    bool pReady = pCrop.isCropReady(day - pCrop.getDayPlanted());
+    bool pReady = pCrop.isCropReady((day * w.get_boost_val()) - pCrop.getDayPlanted());
     pCrop.add_harvested_crop(pReady);
 
     // TOMATO
-    bool tReady = tCrop.isCropReady(day - tCrop.getDayPlanted());
+    bool tReady = tCrop.isCropReady((day * w.get_boost_val()) - tCrop.getDayPlanted());
     tCrop.add_harvested_crop(tReady);
 
     // CABBAGE
-    bool cbgReady = cbgCrop.isCropReady(day - cbgCrop.getDayPlanted());
+    bool cbgReady = cbgCrop.isCropReady((day * w.get_boost_val()) - cbgCrop.getDayPlanted());
     cbgCrop.add_harvested_crop(cbgReady);
 
     // CARROT
-    bool crtReady = crtCrop.isCropReady(day - crtCrop.getDayPlanted());
+    bool crtReady = crtCrop.isCropReady((day * w.get_boost_val()) - crtCrop.getDayPlanted());
     crtCrop.add_harvested_crop(crtReady);
 
     // List of actions
@@ -212,6 +200,7 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "3. Watering can"
              << "\n";
+     
 
         // Upgrade equipment based on user's choice
         int upgrade_action;
@@ -222,20 +211,28 @@ int main(int argc, char *argv[]) {
         // ******* need to add functionality here ************
         switch (upgrade_action) {
           case 1:
-            g.Upgrade();
-            cout << "Gardening hoe upgraded!"
-                 << "\n";
+               if (user.getCoins()>=g.get_equip_val()){
+               g.Upgrade();
+            cout << "Gardening hoe upgraded to level "<<g.get_util_lvl()<<endl;
+                cout << "\n";
+               }
+               else cout<<"Not enough coins to upgrade"<<endl;
             break;
           case 2:
-            f.Upgrade();
-            cout << "Fertiliser upgraded!"
-                 << "\n";
+               if (user.getCoins() >= f.get_equip_val()){
+               f.Upgrade();
+            cout << "Fertiliser upgraded to level "<<f.get_util_lvl()<<endl;
+                 cout<< "\n";
+               }
+                else cout<<"Not enough coins to upgrade"<<endl;
             break;
           case 3:
-            w.Upgrade();
-            cout << "Watering can upgraded!"
-                 << "\n";
-
+               if (user.getCoins() >= w.get_equip_val()){
+               w.Upgrade();
+            cout << "Watering can upgraded to level"<<w.get_util_lvl()<<endl;
+                 cout<< "\n";
+               }
+                else cout<<"Not enough coins to upgrade"<<endl;
             break;
         }
         cout << "\n";
@@ -265,18 +262,19 @@ int main(int argc, char *argv[]) {
 
         // Adds coins to the player's wallet after selling all stock of their
         // chosen crop Number of coins is calculated and then added
+        //IMPLEMENTED FUNCTION OF FERTILISER, INCREASE COINS
         switch (sell_action) {
           case 1:
-            user.addCoins(pCrop.sellCrop());
+            user.addCoins(pCrop.sellCrop() * f.get_boost_val());
             break;
           case 2:
-            user.addCoins(tCrop.sellCrop());
+            user.addCoins(tCrop.sellCrop() * f.get_boost_val());
             break;
           case 3:
-            user.addCoins(cbgCrop.sellCrop());
+            user.addCoins(cbgCrop.sellCrop() * f.get_boost_val());
             break;
           case 4:
-            user.addCoins(crtCrop.sellCrop());
+            user.addCoins(crtCrop.sellCrop() * f.get_boost_val());
             break;
         }
         cout << "\n";
@@ -313,15 +311,18 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "---------------------------"
              << "\n";
-        cout << "Gardening hoe -> " << g.get_util_lvl() << endl;
-        g.get_Function();
-        cout << "\n";
-        cout << "Fertiliser -> " << f.get_util_lvl();
-        f.get_Function();
-        cout << "\n";
-        cout << "Watering can -> " << w.get_util_lvl();
-        w.get_Function();
-        cout << "\n";
+        cout << "Gardening hoe -> "
+             << "Utility level: "<<g.get_util_lvl()<<endl;
+             g.get_Function();
+        cout<< "\n";
+        cout << "Fertiliser -> "
+             <<"Utility level: "<< f.get_util_lvl();
+             f.get_Function();
+        cout<< "\n";
+        cout << "Watering can -> "
+             <<"Utility level: "<< w.get_util_lvl();
+             w.get_Function();
+        cout<< "\n";
 
         cout << "\n";
         cout << "Enter Y to continue: "
