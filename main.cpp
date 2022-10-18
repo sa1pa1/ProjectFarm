@@ -1,27 +1,37 @@
-// **** Add header comment here
-
 // compile with:
-// g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h
-// Tomato.h Cabbage.h Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp
-// Player.cpp Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp
-// main.cpp -o main
+// g++ Player.h Inventory.h Potato.h Tomato.h Cabbage.h Carrot.h Player.cpp
+// Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
 
-#include <fstream>
+// enter -100 to exit game loop
+
+// what works right now:
+// planting/harvesting crops
+// selling crops
+// inspect vegetables
+// inspect wallet
+// Go to next day
+
+// need to add:
+// equipment functionality (main switch case 2)
+// inspect equipment       (main switch case 5)
+// instructions            (start of the game, after user's name is entered)
+// save file
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 #include "Cabbage.h"
 #include "Carrot.h"
-#include "Equipment.h"
-#include "Fertiliser.h"
-#include "GardeningHoe.h"
 #include "Inventory.h"
 #include "Item.h"
 #include "Player.h"
 #include "Potato.h"
 #include "Tomato.h"
 #include "Vegetable.h"
+#include "Equipment.h"
+#include "GardeningHoe.h"
+#include "Fertiliser.h"
 #include "WateringCan.h"
 
 using namespace std;
@@ -41,10 +51,10 @@ int main(int argc, char *argv[]) {
        << "\n";
   cout << "\n";
 
-  // create equipment objects
-  WateringCan w;
-  Fertiliser f;
-  GardeningHoe g;
+  // create equipment objects 
+     WateringCan w;
+     Fertiliser f;
+     GardeningHoe g;
 
   // Create vegetable crop objects
   Potato pCrop;
@@ -62,9 +72,8 @@ int main(int argc, char *argv[]) {
   crop_inventory.add_veg(&cbgCrop);
   crop_inventory.add_veg(&crtCrop);
 
-  // Background day count and output counter
+  // Day counter
   int day = 1;
-  int counter = 1;
 
   // Ask user for their name
   string name;
@@ -72,27 +81,11 @@ int main(int argc, char *argv[]) {
   cin >> name;
   cout << "\n";
 
-  // Instructions message
+  // Instructions
   cout << "Hi " << name << "! Here are the instructions on how to play..."
        << "\n";
 
-  cout << "\n";
-  cout << "This is a farming simulator where you have to collect 1000 coins to "
-          "win."
-       << "You can collect coins by selling crops, you already have potato "
-          "crops but you can buy more crops from the trader."
-       << "You can also buy equipment upgrades for your hoe, watering can and "
-          "fertiliser. The upgrades assist you with earning more coins."
-          "To play you must type in the number corresponding with that option. "
-          "Good luck!"
-       << "\n";
-
-  char key;
-  cout << "\n";
-  cout << "Enter any key to continue: "
-       << "\n";
-  cin >> key;
-  cout << "\n";
+  // *** enter complete instructions here ***
 
   // enter -100 to exit game loop
   int action = 0;
@@ -104,28 +97,25 @@ int main(int argc, char *argv[]) {
     // If crop is ready to harvest, harvest output message will be displayed
     // and the correct number of crops will be added to the user's inventory
 
-    // initialise current multipliers
-    int output_multiplier = g.get_boost_val();
-    int day_multiplier = w.get_boost_val();
-
+    // day - day_planted = growth_time
+    //IMPLEMENTED IN FUNCTION OF WATERING CAN
     // POTATO
     bool pReady = pCrop.isCropReady(day - pCrop.getDayPlanted());
-    pCrop.add_harvested_crop(output_multiplier, pReady);
+    pCrop.add_harvested_crop(pReady);
 
     // TOMATO
     bool tReady = tCrop.isCropReady(day - tCrop.getDayPlanted());
-    tCrop.add_harvested_crop(output_multiplier, tReady);
+    tCrop.add_harvested_crop(tReady);
 
     // CABBAGE
-    bool cbgReady = cbgCrop.isCropReady(day - cbgCrop.getDayPlanted());
-    cbgCrop.add_harvested_crop(output_multiplier, cbgReady);
+    bool cbgReady = cbgCrop.isCropReady(day  - cbgCrop.getDayPlanted());
+    cbgCrop.add_harvested_crop(cbgReady);
 
     // CARROT
     bool crtReady = crtCrop.isCropReady(day - crtCrop.getDayPlanted());
-    crtCrop.add_harvested_crop(output_multiplier, crtReady);
+    crtCrop.add_harvested_crop(crtReady);
 
     // List of actions
-    // User selects by entering numbers 1-9
     cout << "Select a number to choose an action: "
          << "\n";
     cout << "1. Plant vegetable"
@@ -142,10 +132,6 @@ int main(int argc, char *argv[]) {
          << "\n";
     cout << "7. Go to next day"
          << "\n";
-    cout << "8. Save progress"
-         << "\n";
-    cout << "9. Load progress"
-         << "\n";
 
     // user chooses action number
     cin >> action;
@@ -153,21 +139,16 @@ int main(int argc, char *argv[]) {
 
     switch (action) {
         // Plant vegetable action
-        // Displays the number of days the crop will take to grow
       case 1:
-        cout << "Choose which vegetable to plant (days till harvest): "
+        cout << "Choose which vegetable to plant: "
              << "\n";
-        cout << "1. Potato "
-             << "(" << pCrop.getGrowthTime() / day_multiplier << " days)"
+        cout << "1. Potato"
              << "\n";
-        cout << "2. Tomato "
-             << "(" << tCrop.getGrowthTime() / day_multiplier << " days)"
+        cout << "2. Tomato"
              << "\n";
-        cout << "3. Cabbage "
-             << "(" << cbgCrop.getGrowthTime() / day_multiplier << " days)"
+        cout << "3. Cabbage"
              << "\n";
-        cout << "4. Carrot "
-             << "(" << crtCrop.getGrowthTime() / day_multiplier << " days)"
+        cout << "4. Carrot"
              << "\n";
 
         // Plants crop based on user's choice
@@ -175,8 +156,6 @@ int main(int argc, char *argv[]) {
         cin >> plant_action;
         cout << "\n";
 
-        // Asks user how many seeds they want to plant
-        // Minimum 0 and Maximum 10
         switch (plant_action) {
           int num_seeds;
           case 1:
@@ -203,11 +182,6 @@ int main(int argc, char *argv[]) {
             crtCrop.plantCrop(num_seeds);
             crtCrop.setDayPlanted(day);
             break;
-
-          default:
-            cout << "Invalid input. Please try again."
-                 << "\n";
-            cout << "\n";
         }
         cout << "\n";
         cout << "Enter Y to continue: "
@@ -226,53 +200,67 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "3. Watering can"
              << "\n";
+     
 
         // Upgrade equipment based on user's choice
         int upgrade_action;
         cin >> upgrade_action;
         cout << "\n";
 
-        // Upgrades the user's chosen piece of equipment
-        // Provided the user has enough coins in their wallet
+        // ******* PLACEHOLDER OUTPUT ************
+        // ******* need to add functionality here ************
         switch (upgrade_action) {
           case 1:
-            if (user.getCoins() >= g.get_equip_val()) {
-              g.Upgrade();
-              user.removeCoins(g.get_equip_val());
-              cout << g.get_equip_val() << " spent!" << endl;
-              cout << "Gardening hoe upgraded to level " << g.get_util_lvl()
-                   << endl;
-              cout << "\n";
-            } else
-              cout << "Not enough coins to upgrade" << endl;
+               
+               if (user.getCoins()>=g.get_equip_val()){
+               g.Upgrade();
+               user.removeCoins(g.get_equip_val());
+               cout<<g.get_equip_val()<<" spent!"<<endl;
+               cout << "Gardening hoe upgraded to level "<<g.get_util_lvl()<<endl;
+               cout << "\n";
+
+               if (g.get_util_lvl() == 3){
+                    g.get_equip_val() = 0;
+                    cout<<"Maximum level reached, can no longer update!"<<endl;
+               }
+               }
+               else cout<<"Not enough coins to upgrade"<<endl;
+               
+               
+               
             break;
           case 2:
-            if (user.getCoins() >= f.get_equip_val()) {
-              f.Upgrade();
-              user.removeCoins(f.get_equip_val());
-              cout << f.get_equip_val() << " spent!" << endl;
-              cout << "Fertiliser upgraded to level " << f.get_util_lvl()
-                   << endl;
-              cout << "\n";
-            } else
-              cout << "Not enough coins to upgrade" << endl;
+               
+               if (user.getCoins() >= f.get_equip_val()){
+               f.Upgrade();
+                user.removeCoins(f.get_equip_val());
+               cout<<f.get_equip_val()<<" spent!"<<endl;
+               cout << "Fertiliser upgraded to level "<<f.get_util_lvl()<<endl;
+               cout<< "\n";
+
+               if (f.get_util_lvl() == 3){
+                    f.get_equip_val() = 0;
+                    cout<<"Maximum level reached, can no longer update!"<<endl;
+               }
+               }
+               }
+                else cout<<"Not enough coins to upgrade"<<endl;
             break;
           case 3:
-            if (user.getCoins() >= w.get_equip_val()) {
-              w.Upgrade();
-              user.removeCoins(w.get_equip_val());
-              cout << w.get_equip_val() << " spent!" << endl;
-              cout << "Watering can upgraded to level " << w.get_util_lvl()
-                   << endl;
-              cout << "\n";
-            } else
-              cout << "Not enough coins to upgrade" << endl;
-            break;
+               if (user.getCoins() >= w.get_equip_val()){
+               w.Upgrade();
+                user.removeCoins(w.get_equip_val());
+               cout<<w.get_equip_val()<<" spent!"<<endl;
+               cout << "Watering can upgraded to level"<<w.get_util_lvl()<<endl;
+               cout<< "\n";
 
-          default:
-            cout << "Invalid input. Please try again."
-                 << "\n";
-            cout << "\n";
+               if (w.get_util_lvl() == 3){
+                    w.get_equip_val() = 0;
+                    cout<<"Maximum level reached, can no longer update!"<<endl;
+               }
+               }
+                else cout<<"Not enough coins to upgrade"<<endl;
+            break;
         }
         cout << "\n";
         cout << "Enter Y to continue: "
@@ -301,6 +289,7 @@ int main(int argc, char *argv[]) {
 
         // Adds coins to the player's wallet after selling all stock of their
         // chosen crop Number of coins is calculated and then added
+        //IMPLEMENTED FUNCTION OF FERTILISER, INCREASE COINS
         switch (sell_action) {
           case 1:
             user.addCoins(pCrop.sellCrop() * f.get_boost_val());
@@ -314,10 +303,6 @@ int main(int argc, char *argv[]) {
           case 4:
             user.addCoins(crtCrop.sellCrop() * f.get_boost_val());
             break;
-          default:
-            cout << "Invalid input. Please try again."
-                 << "\n";
-            cout << "\n";
         }
         cout << "\n";
         cout << "Enter Y to continue: "
@@ -327,8 +312,6 @@ int main(int argc, char *argv[]) {
         break;
 
         // Inspect vegetables action
-        // Displays the number of crops the user has in their inventory for each
-        // vegetable
       case 4: {
         std::vector<Vegetable *> crop_vector = crop_inventory.getVectorCopy();
         cout << "Current vegetable inventory "
@@ -348,28 +331,25 @@ int main(int argc, char *argv[]) {
         break;
       }
         // Inspect equipment action
-        // Displays information of user's equipment
-        // Shows current equipment levels and functionality of each piece of
-        // equipment
+        // ******* PLACEHOLDER OUTPUT ************
+        // ******* need to add functionality here ************
       case 5:
         cout << "Current equipment levels"
              << "\n";
         cout << "---------------------------"
              << "\n";
-        cout << "Gardening Hoe -> "
-             << "Utility level: " << g.get_util_lvl() << "\n";
-        g.get_Function();
-        cout << "\n";
-        cout << "\n";
+        cout << "Gardening hoe -> "
+             << "Utility level: "<<g.get_util_lvl()<<endl;
+             g.get_Function();
+        cout<< "\n";
         cout << "Fertiliser -> "
-             << "Utility level: " << f.get_util_lvl() << "\n";
-        f.get_Function();
-        cout << "\n";
-        cout << "\n";
+             <<"Utility level: "<< f.get_util_lvl();
+             f.get_Function();
+        cout<< "\n";
         cout << "Watering can -> "
-             << "Utility level: " << w.get_util_lvl() << "\n";
-        w.get_Function();
-        cout << "\n";
+             <<"Utility level: "<< w.get_util_lvl();
+             w.get_Function();
+        cout<< "\n";
 
         cout << "\n";
         cout << "Enter Y to continue: "
@@ -379,7 +359,6 @@ int main(int argc, char *argv[]) {
         break;
 
         // Inspect wallet action
-        // Displays the current number of coins the user has
       case 6:
         cout << "You currently have " << user.getCoins() << " coins!"
              << "\n";
@@ -392,11 +371,9 @@ int main(int argc, char *argv[]) {
         break;
 
         // Go to next day action
-        // User skips to the next day
       case 7:
-        counter++;
-        day += day_multiplier;
-        cout << "You have skipped to day " << counter << "\n";
+        day++;
+        cout << "You have skipped to day " << day << "\n";
 
         cout << "\n";
         cout << "Enter Y to continue: "
@@ -404,57 +381,11 @@ int main(int argc, char *argv[]) {
         cin >> Y;
         cout << "\n";
         break;
-
-        // Save coin progress
-      case 8: {
-        ofstream myfile("save.txt");
-        if (myfile.is_open()) {
-          myfile << user.getCoins();
-          myfile.close();
-        } else
-          cout << "error" << endl;
-        cout << "file saved \n";
-        return 0;
-        break;
-      }
-
-        // Load coin progress
-      case 9: {
-        fstream myfile;
-        myfile.open("save.txt", ios::in);
-        if (!myfile) {
-          cout << "error";
-        } else {
-          char ch;
-          int a;
-          while (1) {
-            myfile >> ch;
-            if (myfile.eof()) break;
-
-            a == ch - '0';
-          }
-          user.addCoins(a);
-          myfile.close();
-        }
-        break;
-      }
-      // if user inputs a number not 1-9
-      default:
-        cout << "Invalid input. Please try again."
-             << "\n";
-        cout << "\n";
     }
   }
 
-  // Victory message
-  cout << "\n";
-  cout << "--------------------------------------------------------------------"
-          "-------------------------"
-       << "\n";
-  cout << "                       Congratulations! You have reached 1000 coins."
-       << "\n";
-  cout << "--------------------------------------------------------------------"
-          "-------------------------"
+  // victory message
+  cout << "Congratulations! You have reached 1000 coins."
        << "\n";
   cout << "Game finished."
        << "\n";
