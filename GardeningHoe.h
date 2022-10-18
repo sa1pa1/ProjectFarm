@@ -11,6 +11,7 @@ class GardeningHoe: public Equipment{
         string equip_name;
          int util_lvl;
          double util_boost;
+         int equip_value;
 
     public: 
         GardeningHoe();
@@ -18,6 +19,7 @@ class GardeningHoe: public Equipment{
         void Upgrade();
         int get_util_lvl();
         int get_boost_val();
+        int get_equip_val();
         string get_name();
 
 };

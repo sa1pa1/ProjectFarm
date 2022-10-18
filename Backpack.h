@@ -15,6 +15,7 @@ class Backpack: public WateringCan, public GardeningHoe, public Fertiliser{
     private:
         Equipment* contents;
         int curr_equip_num;
+        int max; 
     public: 
 
         Backpack();
