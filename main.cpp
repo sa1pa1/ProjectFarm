@@ -1,11 +1,13 @@
 // compile with:
-// g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h Tomato.h Cabbage.h 
-// Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp Player.cpp Inventory.cpp Potato.cpp 
-// Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
+// g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h
+// Tomato.h Cabbage.h Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp
+// Player.cpp Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp
+// main.cpp -o main
 
 // enter -100 to exit game loop
 
 // what works right now:
+// instructions
 // planting/harvesting crops
 // selling crops
 // inspect vegetables
@@ -15,7 +17,6 @@
 // need to add:
 // equipment functionality (main switch case 2)
 // inspect equipment       (main switch case 5)
-// instructions            (start of the game, after user's name is entered)
 // save file
 
 #include <iostream>
@@ -24,15 +25,15 @@
 
 #include "Cabbage.h"
 #include "Carrot.h"
+#include "Equipment.h"
+#include "Fertiliser.h"
+#include "GardeningHoe.h"
 #include "Inventory.h"
 #include "Item.h"
 #include "Player.h"
 #include "Potato.h"
 #include "Tomato.h"
 #include "Vegetable.h"
-#include "Equipment.h"
-#include "GardeningHoe.h"
-#include "Fertiliser.h"
 #include "WateringCan.h"
 
 using namespace std;
@@ -52,10 +53,10 @@ int main(int argc, char *argv[]) {
        << "\n";
   cout << "\n";
 
-  // create equipment objects 
-     WateringCan w;
-     Fertiliser f;
-     GardeningHoe g;
+  // create equipment objects
+  WateringCan w;
+  Fertiliser f;
+  GardeningHoe g;
 
   // Create vegetable crop objects
   Potato pCrop;
@@ -86,13 +87,17 @@ int main(int argc, char *argv[]) {
   cout << "Hi " << name << "! Here are the instructions on how to play..."
        << "\n";
 
-  // *** enter complete instructions here ***
-  
   cout << "\n";
-  cout << "This is a farming simulator where you have to collect 1000 coins to win." << "\n";
-  cout << "You can collect coins by selling crops, you already have potato crops but you can buy more crops from the trader." << "\n";
-  cout << "You can also buy equipment upgrades for your hoe, watering can and fertiliser. The upgrades assist you with earning more coins."
-          "To play you must type in the number corresponding with that option. Good luck!"
+  cout << "This is a farming simulator where you have to collect 1000 coins to "
+          "win."
+       << "\n";
+  cout << "You can collect coins by selling crops, you already have potato "
+          "crops but you can buy more crops from the trader."
+       << "\n";
+  cout << "You can also buy equipment upgrades for your hoe, watering can and "
+          "fertiliser. The upgrades assist you with earning more coins."
+          "To play you must type in the number corresponding with that option. "
+          "Good luck!"
        << "\n";
 
   // enter -100 to exit game loop
@@ -207,7 +212,6 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "3. Watering can"
              << "\n";
-     
 
         // Upgrade equipment based on user's choice
         int upgrade_action;
@@ -218,17 +222,17 @@ int main(int argc, char *argv[]) {
         // ******* need to add functionality here ************
         switch (upgrade_action) {
           case 1:
-               g.Upgrade();
+            g.Upgrade();
             cout << "Gardening hoe upgraded!"
                  << "\n";
             break;
           case 2:
-               f.Upgrade();
+            f.Upgrade();
             cout << "Fertiliser upgraded!"
                  << "\n";
             break;
           case 3:
-               w.Upgrade();
+            w.Upgrade();
             cout << "Watering can upgraded!"
                  << "\n";
 
@@ -309,18 +313,15 @@ int main(int argc, char *argv[]) {
              << "\n";
         cout << "---------------------------"
              << "\n";
-        cout << "Gardening hoe -> "
-             << g.get_util_lvl()<<endl;
-             g.get_Function();
-        cout<< "\n";
-        cout << "Fertiliser -> "
-             << f.get_util_lvl();
-             f.get_Function();
-        cout<< "\n";
-        cout << "Watering can -> "
-             << w.get_util_lvl();
-             w.get_Function();
-        cout<< "\n";
+        cout << "Gardening hoe -> " << g.get_util_lvl() << endl;
+        g.get_Function();
+        cout << "\n";
+        cout << "Fertiliser -> " << f.get_util_lvl();
+        f.get_Function();
+        cout << "\n";
+        cout << "Watering can -> " << w.get_util_lvl();
+        w.get_Function();
+        cout << "\n";
 
         cout << "\n";
         cout << "Enter Y to continue: "
