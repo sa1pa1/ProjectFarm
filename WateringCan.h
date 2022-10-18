@@ -11,8 +11,10 @@ using namespace std;
 class WateringCan: public Equipment{
     protected:
         string equip_name;
-        double util_boost;
+        int util_boost;
         int util_lvl;
+        int equip_value;
+    
 
     public:
         WateringCan();
@@ -20,6 +22,7 @@ class WateringCan: public Equipment{
         void Upgrade();
         int get_util_lvl();
         int get_boost_val();
+        int get_equip_val();
         string get_name();
     
 };

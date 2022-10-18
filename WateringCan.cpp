@@ -8,6 +8,7 @@ WateringCan::WateringCan(){
     equip_name = "Watering Can";
     util_boost = 1;
     util_lvl = 1;
+    equip_value = 0;
 
 }
 
@@ -27,13 +28,16 @@ void WateringCan::get_Function(){
 void WateringCan::Upgrade(){
     if (util_lvl < 3){
     util_lvl = util_lvl + 1;
-    util_boost = 0.75;
+    util_boost = 2;
+    equip_value = 100;
+
     }
 
     if (util_lvl ==3) {
         cout<<"Maximum utility level reached"<<endl;
         util_lvl = 3;
-        util_boost = 0.85;
+        util_boost = 3;
+        equip_value = 200;
     }
 }
 
@@ -49,4 +53,8 @@ string WateringCan::get_name(){
 
 int WateringCan::get_boost_val(){
     return util_boost;
+}
+
+int WateringCan::get_equip_val(){
+    return equip_value;
 }

@@ -10,6 +10,7 @@ Fertiliser::Fertiliser(){
     equip_name = "Fertiliser";
     util_lvl = 1;
     util_boost = 1;
+    equip_value = 0;
 }
 
 
@@ -32,12 +33,14 @@ void Fertiliser::Upgrade(){
     if (util_lvl < 3){
     util_lvl = util_lvl + 1;
     util_boost = 2;
+    equip_value = 100;
     }
 
     if (util_lvl ==3) {
         cout<<"Maximum utility level reached"<<endl;
         util_lvl = 3;
         util_boost = 3;
+        equip_value = 200;
     }
 }
 
@@ -49,6 +52,10 @@ string Fertiliser::get_name(){
 }
 int Fertiliser::get_boost_val(){
     return util_boost;
+}
+
+int Fertiliser::get_equip_val(){
+    return equip_value;
 }
 
 

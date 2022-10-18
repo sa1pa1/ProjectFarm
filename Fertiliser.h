@@ -9,7 +9,8 @@ class Fertiliser: public Equipment {
     protected:
         string equip_name;
         int util_lvl;
-        double util_boost;
+        int util_boost;
+        int equip_value;
        
      
     public: 
@@ -19,6 +20,7 @@ class Fertiliser: public Equipment {
         void Upgrade();
         int get_util_lvl();
         int get_boost_val();
+        int get_equip_val();
         string get_name();
 
 };
