@@ -362,6 +362,37 @@ int main(int argc, char *argv[]) {
         break;
     }
   }
+  
+            // Save coin progress 
+        case 8:
+          ofstream myfile ("save.txt");
+          if (myfile.is_open()){
+               myfile << user.getCoins();
+               myfile.close();
+               }
+          cout << "file saved" << endl;
+         break;
+
+          // Load coin progress
+        case 9:
+         fstream my_file;
+	       my_file.open("save.txt", ios::in);
+	       if (!my_file) {
+	        cout << "No save data";
+	       }
+	       else {
+		      char ch;
+          while (1) {
+		       my_file >> ch;
+		        if (my_file.eof())
+		      break;
+         int x = ch - '0';
+         user.addCoins(x);
+         cout << "file saved" << endl;
+		}
+	}
+	    my_file.close();
+    }
 
   // victory message
   cout << "Congratulations! You have reached 1000 coins."
