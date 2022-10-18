@@ -1,6 +1,7 @@
 // compile with:
-// g++ Player.h Inventory.h Potato.h Tomato.h Cabbage.h Carrot.h Player.cpp
-// Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
+// g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h Tomato.h Cabbage.h 
+// Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp Player.cpp Inventory.cpp Potato.cpp 
+// Tomato.cpp Cabbage.cpp Carrot.cpp main.cpp -o main
 
 // enter -100 to exit game loop
 
@@ -88,8 +89,8 @@ int main(int argc, char *argv[]) {
   // *** enter complete instructions here ***
   
   cout << "\n";
-  cout << "This is a farming simulator where you have to collect 1000 coins to win."
-  cout << "You can collect coins by selling crops, you already have potato crops but you can buy more crops from the trader."
+  cout << "This is a farming simulator where you have to collect 1000 coins to win." << "\n";
+  cout << "You can collect coins by selling crops, you already have potato crops but you can buy more crops from the trader." << "\n";
   cout << "You can also buy equipment upgrades for your hoe, watering can and fertiliser. The upgrades assist you with earning more coins."
           "To play you must type in the number corresponding with that option. Good luck!"
        << "\n";
