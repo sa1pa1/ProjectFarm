@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// MAIN FILE FOR COIN FARM PROJECT                                                                    //
-//                                                                                                    //
-// This program is a farming simulator game in which the player's goal is to                          //
-// reach 1000 coins. The farm grows different crops with varying attributes and                       //
-// the player can upgrade their equipment to help them win the game faster.                           //
-//                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MAIN FILE FOR COIN FARM PROJECT 
+                                                                                                    
+// This program is a farming simulator game in which the player's goal is to 
+// reach 1000 coins. The farm grows different crops with varying attributes and
+// the player can upgrade their equipment to help them win the game faster.
+                                                                                              
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // compile with:
@@ -135,7 +135,7 @@ int main(int argc, char *argv[]) {
     crtCrop.add_harvested_crop(output_multiplier, crtReady);
 
     // List of actions
-    // User selects by entering numbers 1-9
+    // User selects by entering numbers 1-7
     cout << "Select a number to choose an action: "
          << "\n";
     cout << "1. Plant vegetable"
@@ -151,10 +151,6 @@ int main(int argc, char *argv[]) {
     cout << "6. Inspect wallet"
          << "\n";
     cout << "7. Go to next day"
-         << "\n";
-    cout << "8. Save progress"
-         << "\n";
-    cout << "9. Load progress"
          << "\n";
 
     // user chooses action number
@@ -444,40 +440,6 @@ int main(int argc, char *argv[]) {
         cin >> Y;
         cout << "\n";
         break;
-
-        // Save coin progress
-      case 8: {
-        ofstream myfile("save.txt");
-        if (myfile.is_open()) {
-          myfile << user.getCoins();
-          myfile.close();
-        } else
-          cout << "error" << endl;
-        cout << "file saved \n";
-        return 0;
-        break;
-      }
-        // Load coin progress
-
-      case 9: {
-        fstream myfile;
-        myfile.open("save.txt", ios::in);
-        if (!myfile) {
-          cout << "error";
-        } else {
-          char ch;
-          int a;
-          while (1) {
-            myfile >> ch;
-            if (myfile.eof()) break;
-
-            a == ch - '0';
-          }
-          user.addCoins(a);
-          myfile.close();
-        }
-        break;
-      }
 
         // if user inputs a number not 1-9
       default:
