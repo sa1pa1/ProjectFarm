@@ -6,7 +6,7 @@
  * its function members.
  *
  * To start the game, the user has a level 1 fertiliser in their inventory.
- * Fertiliser can be upgraded to improve crop output.
+ * Fertiliser can be upgraded to improve crop value.
  * The upgrade can be bought for 100 coins for lvl 2 and 200 for lvl 3.
  */
 #include "Fertiliser.h"
@@ -20,7 +20,7 @@ using namespace std;
 Fertiliser::Fertiliser() {
   equip_name = "Fertiliser";
   util_lvl = 1;       // upgrade level
-  util_boost = 1;     // The multiplier for crop output
+  util_boost = 1;     // The multiplier for crop value
   equip_value = 100;  // The value of the equipment increases as you upgrade
 }
 
