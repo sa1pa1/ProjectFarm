@@ -47,7 +47,7 @@ int Fertiliser::get_util_lvl(){
 string Fertiliser::get_name(){
     return equip_name;
 }
-double Fertiliser::get_boost_val(){
+int Fertiliser::get_boost_val(){
     return util_boost;
 }
 
