@@ -100,19 +100,19 @@ int main(int argc, char *argv[]) {
     // day - day_planted = growth_time
     //IMPLEMENTED IN FUNCTION OF WATERING CAN
     // POTATO
-    bool pReady = pCrop.isCropReady((day * w.get_boost_val()) - pCrop.getDayPlanted());
+    bool pReady = pCrop.isCropReady(day - pCrop.getDayPlanted());
     pCrop.add_harvested_crop(pReady);
 
     // TOMATO
-    bool tReady = tCrop.isCropReady((day * w.get_boost_val()) - tCrop.getDayPlanted());
+    bool tReady = tCrop.isCropReady(day - tCrop.getDayPlanted());
     tCrop.add_harvested_crop(tReady);
 
     // CABBAGE
-    bool cbgReady = cbgCrop.isCropReady((day * w.get_boost_val()) - cbgCrop.getDayPlanted());
+    bool cbgReady = cbgCrop.isCropReady(day  - cbgCrop.getDayPlanted());
     cbgCrop.add_harvested_crop(cbgReady);
 
     // CARROT
-    bool crtReady = crtCrop.isCropReady((day * w.get_boost_val()) - crtCrop.getDayPlanted());
+    bool crtReady = crtCrop.isCropReady(day - crtCrop.getDayPlanted());
     crtCrop.add_harvested_crop(crtReady);
 
     // List of actions
