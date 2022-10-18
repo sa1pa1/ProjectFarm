@@ -8,6 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // compile with:
+// make 
+// or
 // g++ WateringCan.h Fertiliser.h GardeningHoe.h Player.h Inventory.h Potato.h
 // Tomato.h Cabbage.h Carrot.h WateringCan.cpp Fertiliser.cpp GardeningHoe.cpp
 // Player.cpp Inventory.cpp Potato.cpp Tomato.cpp Cabbage.cpp Carrot.cpp
@@ -278,7 +280,7 @@ int main(int argc, char *argv[]) {
               f.Upgrade();
               user.removeCoins(f.get_equip_val());
               cout << f.get_equip_val() << " coins spent!" << endl;
-              cout << "Gardening hoe upgraded to level " << f.get_util_lvl()
+              cout << "Fertiliser upgraded to level " << f.get_util_lvl()
                    << endl;
               cout << "\n";
             }
@@ -299,7 +301,7 @@ int main(int argc, char *argv[]) {
               w.Upgrade();
               user.removeCoins(w.get_equip_val());
               cout << w.get_equip_val() << " coins spent!" << endl;
-              cout << "Gardening hoe upgraded to level " << w.get_util_lvl()
+              cout << "Watering can upgraded to level " << w.get_util_lvl()
                    << endl;
               cout << "\n";
             }
