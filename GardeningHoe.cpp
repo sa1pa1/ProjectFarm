@@ -14,30 +14,28 @@ GardeningHoe::GardeningHoe(){
 //inspection constructor 
 void GardeningHoe::get_Function(){
     if (util_lvl == 1){
-        cout<<"Gardening Hoe of level 1 boost growth output by 0.00x";
+        cout<<"Gardening Hoe of level 1 boost growth output by 0x";
     }
 
     if (util_lvl == 2){
-        cout<<"Gardening Hoe of level 2 boost growth output by 0.25x";
+        cout<<"Gardening Hoe of level 2 boost growth output by 2x";
     }
 
     if (util_lvl == 3){
-        cout<<"Gardening Hoe of level 3 boost growth output by 0.5x";
+        cout<<"Gardening Hoe of level 3 boost growth output by 3x";
     }
 }
 
 void GardeningHoe::Upgrade(){
     if (util_lvl < 3){
-        util_lvl = util_lvl + 1;
+    util_lvl = util_lvl + 1;
+    util_boost = 2;
     }
-    else cout<<"Maximum utility level reached"<<endl;
-        util_lvl = 3;
 
-    if (util_lvl == 2){
-        util_boost = 1.25;
-    }
-    if (util_lvl == 3){
-    util_boost = 1.5;
+    if (util_lvl ==3) {
+        cout<<"Maximum utility level reached"<<endl;
+        util_lvl = 3;
+        util_boost = 3;
     }
 }
 
@@ -49,7 +47,7 @@ string GardeningHoe::get_name(){
     return equip_name;
 }
 
-int GardeningHoe::get_boost_val(){
+double GardeningHoe::get_boost_val(){
     return util_boost;
 }
 
