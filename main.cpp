@@ -213,24 +213,30 @@ int main(int argc, char *argv[]) {
           case 1:
                if (user.getCoins()>=g.get_equip_val()){
                g.Upgrade();
-            cout << "Gardening hoe upgraded to level "<<g.get_util_lvl()<<endl;
-                cout << "\n";
+               user.removeCoins(g.get_equip_val());
+               cout<<g.get_equip_val()<<" spent!"<<endl;
+               cout << "Gardening hoe upgraded to level "<<g.get_util_lvl()<<endl;
+               cout << "\n";
                }
                else cout<<"Not enough coins to upgrade"<<endl;
             break;
           case 2:
                if (user.getCoins() >= f.get_equip_val()){
                f.Upgrade();
-            cout << "Fertiliser upgraded to level "<<f.get_util_lvl()<<endl;
-                 cout<< "\n";
+                user.removeCoins(f.get_equip_val());
+               cout<<f.get_equip_val()<<" spent!"<<endl;
+               cout << "Fertiliser upgraded to level "<<f.get_util_lvl()<<endl;
+               cout<< "\n";
                }
                 else cout<<"Not enough coins to upgrade"<<endl;
             break;
           case 3:
                if (user.getCoins() >= w.get_equip_val()){
                w.Upgrade();
-            cout << "Watering can upgraded to level"<<w.get_util_lvl()<<endl;
-                 cout<< "\n";
+                user.removeCoins(w.get_equip_val());
+               cout<<w.get_equip_val()<<" spent!"<<endl;
+               cout << "Watering can upgraded to level"<<w.get_util_lvl()<<endl;
+               cout<< "\n";
                }
                 else cout<<"Not enough coins to upgrade"<<endl;
             break;
