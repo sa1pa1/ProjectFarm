@@ -40,7 +40,6 @@ int main(){
      cout<<"Equipment value: "<<a.get_equip_val()<<endl;
     a.get_Function();
     cout<<endl;
-
 }
     
 
