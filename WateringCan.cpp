@@ -15,7 +15,7 @@
 #include <string>
 using namespace std;
 
-// default wateringcan level. As player start with Wateringcan of level 1.
+// default watering can level. As player start with Wateringcan of level 1.
 WateringCan::WateringCan() {
   equip_name = "Watering Can";
   util_boost = 1; // The multiplier for growth time
@@ -40,7 +40,7 @@ void WateringCan::get_Function() {
   }
 }
 
-// upgrade function to determine what level the fertiliser is
+// upgrade function to determine what level the watering can is
 void WateringCan::Upgrade() {
   if (util_lvl < 3) {
     util_lvl = util_lvl + 1;
